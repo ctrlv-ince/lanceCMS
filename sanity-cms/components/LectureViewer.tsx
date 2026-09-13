@@ -1,6 +1,6 @@
-import React, {useState, useEffect, CSSProperties} from 'react'
+﻿import React, {useState, useEffect, CSSProperties} from 'react'
 
-/* ─── Types ─────────────────────────────────────────── */
+/* â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 interface Lecture {
   id: string
   code: string
@@ -16,7 +16,7 @@ interface Lecture {
   pptUrl: string | null
 }
 
-/* ─── Data ──────────────────────────────────────────── */
+/* â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const LECTURES: Lecture[] = [
   {
     id: 'sap3',
@@ -31,7 +31,7 @@ const LECTURES: Lecture[] = [
     glow: 'rgba(0,229,204,0.25)',
     tag: 'Computer Architecture',
     topics: ['Data Bus', 'ALU Operations', 'Address Bus', 'Instruction Set', 'Interrupts'],
-    pptUrl: null,
+    pptUrl: 'https://docs.google.com/presentation/d/1O75SnWQMlWiyCT-ChK3jqL_7gj6q7w5s/embed?start=false&loop=false&delayms=3000',
   },
   {
     id: 'raspi1',
@@ -39,18 +39,18 @@ const LECTURES: Lecture[] = [
     title: 'Raspberry Pi 1',
     subtitle: 'Introduction to Embedded Systems',
     description:
-      'Introduction to the Raspberry Pi platform — BCM2835 SoC architecture, GPIO pin configuration, Linux OS setup, and first hardware projects.',
+      'Introduction to the Raspberry Pi platform â€” BCM2835 SoC architecture, GPIO pin configuration, Linux OS setup, and first hardware projects.',
     thumb: '/static/thumb_raspi1.jpg',
     accent: '#FF4C6E',
     accentDark: '#CC2244',
     glow: 'rgba(255,76,110,0.25)',
     tag: 'Embedded Systems',
     topics: ['BCM2835 SoC', 'GPIO Pins', 'Linux Setup', 'Hardware I/O', 'Python GPIO'],
-    pptUrl: null,
+    pptUrl: 'https://docs.google.com/presentation/d/1xtiY5icVwHxYthETbRWCYnKxpXhndGNn/embed?start=false&loop=false&delayms=3000',
   },
 ]
 
-/* ─── Keyframe injection ────────────────────────────── */
+/* â”€â”€â”€ Keyframe injection â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -109,6 +109,12 @@ const CSS = `
   }
   .lv-topic-chip:hover {
     filter: brightness(1.12);
+  }  .lv-gallery-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+  }
+  .lv-gallery-card:hover .lv-gallery-img {
+    transform: scale(1.06);
   }
 `
 
@@ -128,7 +134,7 @@ function StyleInjector() {
   return null
 }
 
-/* ─── Modal ─────────────────────────────────────────── */
+/* â”€â”€â”€ Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
   useEffect(() => {
     const fn = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
@@ -190,11 +196,11 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
               boxShadow: `0 0 20px ${lecture.glow}`,
             }}
           >
-            📊
+            ðŸ“Š
           </div>
           <div style={{flex: 1}}>
             <div style={{fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: lecture.accent, marginBottom: 2}}>
-              {lecture.code} · Microcontroller LEC
+              {lecture.code} Â· Microcontroller LEC
             </div>
             <div style={{fontSize: 16, fontWeight: 800, color: '#f0f2ff', letterSpacing: -0.3}}>
               {lecture.title}
@@ -218,7 +224,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
               transition: 'background 0.2s',
             }}
           >
-            ✕
+            âœ•
           </button>
         </div>
 
@@ -270,7 +276,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
                   ['--g' as string]: lecture.glow,
                 }}
               >
-                📂
+                ðŸ“‚
               </div>
               <div>
                 <div style={{fontSize: 18, fontWeight: 800, color: '#f0f2ff', marginBottom: 8}}>
@@ -278,7 +284,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
                 </div>
                 <div style={{fontSize: 13, color: '#8b92b0', lineHeight: 1.6, maxWidth: 340}}>
                   Upload the <strong style={{color: lecture.accent}}>{lecture.code}.pptx</strong> file
-                  via Sanity CMS — it will appear here automatically once added.
+                  via Sanity CMS â€” it will appear here automatically once added.
                 </div>
               </div>
 
@@ -298,8 +304,8 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
                   letterSpacing: 0.3,
                 }}
               >
-                <span>🗄️</span>
-                Go to Structure → Lectures → Upload {lecture.code}
+                <span>ðŸ—„ï¸</span>
+                Go to Structure â†’ Lectures â†’ Upload {lecture.code}
               </div>
             </div>
           )}
@@ -309,7 +315,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
   )
 }
 
-/* ─── Card ──────────────────────────────────────────── */
+/* â”€â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number; onOpen: () => void}) {
   const [hovered, setHovered] = useState(false)
 
@@ -407,7 +413,7 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
               letterSpacing: 0.3,
             }}
           >
-            ▶ View Slides
+            â–¶ View Slides
           </button>
         </div>
 
@@ -451,7 +457,7 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
             gap: 5,
           }}
         >
-          <span style={{fontSize: 7, animation: lecture.pptUrl ? 'none' : 'lv-pulse 2s infinite'}}>●</span>
+          <span style={{fontSize: 7, animation: lecture.pptUrl ? 'none' : 'lv-pulse 2s infinite'}}>â—</span>
           {lecture.pptUrl ? 'Available' : 'Coming Soon'}
         </div>
       </div>
@@ -530,14 +536,14 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
             letterSpacing: 0.3,
           }}
         >
-          Open Lecture <span style={{fontSize: 16}}>→</span>
+          Open Lecture <span style={{fontSize: 16}}>â†’</span>
         </button>
       </div>
     </article>
   )
 }
 
-/* ─── Main Tool ─────────────────────────────────────── */
+/* â”€â”€â”€ Main Tool â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export function LectureViewerTool() {
   const [active, setActive] = useState<Lecture | null>(null)
 
@@ -570,7 +576,7 @@ export function LectureViewerTool() {
           <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:16}}>
             <div style={{height:1,width:32,background:'rgba(255,255,255,0.15)'}} />
             <span style={{fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.35)'}}>
-              Sanity CMS · Microcontroller LEC
+              Sanity CMS Â· Microcontroller LEC
             </span>
             <div style={{height:1,flex:1,background:'rgba(255,255,255,0.06)'}} />
           </div>
@@ -602,9 +608,48 @@ export function LectureViewerTool() {
             </div>
           </div>
         </div>
-
         {/* Divider */}
-        <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)',marginBottom:40}} />
+        <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)',marginBottom:32}} />
+        {/* ── TOPIC DIAGRAMS MOSAIC ── */}
+        <div style={{marginBottom:36,animation:'lv-slideUp 0.5s 0.1s ease both'}}>
+          <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:14}}>
+            <div style={{height:1,width:18,background:'rgba(255,255,255,0.1)'}}/>
+            <span style={{fontSize:9,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.22)'}}>📷 Reference Diagrams</span>
+            <div style={{height:1,flex:1,background:'rgba(255,255,255,0.05)'}}/>
+          </div>
+          <div style={{marginBottom:8}}>
+            <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(0,229,204,0.5)',marginBottom:5}}>SAP-3 — Computer Architecture</div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
+              {[{src:'/static/img_sap3_alu.jpg',alt:'ALU'},{src:'/static/img_sap3_bus.jpg',alt:'Bus'},{src:'/static/img_sap3_cu.jpg',alt:'Control Unit'}].map(d => (
+                <div key={d.src} style={{height:84,border:'1px solid rgba(0,229,204,0.15)',borderRadius:10,overflow:'hidden'}}><img src={d.src} alt={d.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+              ))}
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'2fr 1fr',gap:5,marginBottom:5}}>
+              {[{src:'/static/img_sap3_reg.jpg',alt:'Registers'},{src:'/static/img_sap3_int.jpg',alt:'Interrupt'}].map(d => (
+                <div key={d.src} style={{height:76,border:'1px solid rgba(0,229,204,0.15)',borderRadius:10,overflow:'hidden'}}><img src={d.src} alt={d.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+              ))}
+            </div>
+            <div style={{height:68,border:'1px solid rgba(0,229,204,0.15)',borderRadius:10,overflow:'hidden'}}>
+              <img src="/static/img_sap3_isa.jpg" alt="Instruction Set" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+          <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)',margin:'10px 0'}}/>
+          <div>
+            <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(255,76,110,0.5)',marginBottom:5}}>RASPI-1 — Embedded Systems</div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
+              {[{src:'/static/thumb_raspi1.jpg',alt:'Raspberry Pi'},{src:'/static/img_raspi_gpio.jpg',alt:'GPIO'},{src:'/static/img_raspi_bb.jpg',alt:'Breadboard'}].map(d => (
+                <div key={d.src} style={{height:84,border:'1px solid rgba(255,76,110,0.15)',borderRadius:10,overflow:'hidden'}}><img src={d.src} alt={d.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
+              ))}
+            </div>
+            <div style={{height:76,border:'1px solid rgba(255,76,110,0.15)',borderRadius:10,overflow:'hidden'}}>
+              <img src="/static/img_raspi_term.jpg" alt="Linux Terminal" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+            </div>
+          </div>
+        </div>
+
+        <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)',marginBottom:32}}/>
+
+
 
         {/* Card Grid */}
         <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:24}}>
@@ -616,7 +661,7 @@ export function LectureViewerTool() {
         {/* Footer note */}
         <div style={{marginTop:40,textAlign:'center',animation:'lv-slideUp 0.6s 0.4s ease both'}}>
           <p style={{fontSize:12,color:'rgba(255,255,255,0.2)',letterSpacing:0.5}}>
-            💡 Upload PPTX files via <strong style={{color:'rgba(255,255,255,0.35)'}}>Structure → Lectures</strong> in Sanity to activate the viewer
+            ðŸ’¡ Upload PPTX files via <strong style={{color:'rgba(255,255,255,0.35)'}}>Structure â†’ Lectures</strong> in Sanity to activate the viewer
           </p>
         </div>
       </div>

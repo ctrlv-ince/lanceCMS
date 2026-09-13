@@ -1,0 +1,29 @@
+﻿<a class="skip" href="#content">Skip to content</a>
+<ng-template #navigation>
+  <a routerLink="/" class="flex items-center gap-3 px-2" title="Directus Learn" (click)="closeDrawer()"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/30 bg-primary/15 text-2xl font-semibold text-lavender">d.</span><span class="nav-copy text-xl font-semibold tracking-tight">directus<span class="mt-1 block text-[8px] font-normal tracking-[.16em] text-muted">LEARNING WORKSPACE</span></span></a>
+  <div class="mt-9 flex items-center gap-3 rounded-xl border border-line bg-panel/70 p-3" title="Computer engineering · Student workspace"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-line text-[10px] font-semibold text-lavender">CE</span><div class="nav-copy text-xs leading-5">Computer engineering<span class="block text-[10px] text-muted">Student workspace</span></div></div>
+  <p class="nav-copy mb-3 mt-8 px-3 text-[9px] tracking-[.18em] text-muted">WORKSPACE</p>
+  <nav class="mt-4 space-y-2" aria-label="Workspace">
+    <a class="side-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" ariaCurrentWhenActive="page" title="Course Library" (click)="closeDrawer()"><app-icon name="book" /><span class="nav-copy">Course Library</span></a>
+    <a class="side-link" href="http://127.0.0.1:8055/admin/content/courses" target="_blank" rel="noopener" title="Manage Content (opens Directus)" (click)="closeDrawer()"><app-icon name="grid" /><span class="nav-copy">Manage Content</span><app-icon class="nav-copy ml-auto" name="external" /></a>
+  </nav>
+  <div class="mt-auto border-t border-line pt-5" [title]="health()?.status === 'ok' ? 'All systems connected' : health() ? 'Connection needs attention' : 'Checking connections'">
+    <div class="flex items-center gap-2 px-2 text-[11px] text-muted" role="status"><span class="connection-dot" [class.online]="health()?.status === 'ok'"></span><span class="nav-copy">{{ health()?.status === 'ok' ? 'All systems connected' : health() ? 'Connection needs attention' : 'Checking connections…' }}</span></div>
+    <div class="nav-copy mt-4 flex flex-wrap gap-1.5">@for (tech of ['Angular', 'Tailwind', 'Feathers', 'PostgreSQL', 'Directus']; track tech) { <span class="rounded-md border border-line px-2 py-1 text-[9px] text-muted">{{ tech }}</span> }</div>
+    <p class="nav-copy mt-5 text-[10px] leading-5 text-muted/70">Built to understand.<br>Designed to explore.</p>
+  </div>
+</ng-template>
+<div class="app-shell" [class.is-collapsed]="collapsed()">
+  <aside class="sidebar"><ng-container *ngTemplateOutlet="navigation" /><button class="side-link mt-5" (click)="collapsed.set(!collapsed())" [attr.aria-expanded]="!collapsed()" [attr.aria-label]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'" [title]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'"><app-icon name="panel" /><span class="nav-copy">Collapse sidebar</span></button></aside>
+  <dialog #drawer class="mobile-drawer" aria-label="Workspace navigation" (close)="restoreScroll()" (click)="$event.target === drawer && closeDrawer()">
+    <div class="flex h-full flex-col p-5"><button class="mb-5 ml-auto rounded-lg p-2 text-muted hover:bg-line hover:text-ink" aria-label="Close navigation" (click)="closeDrawer()"><app-icon name="close" /></button><ng-container *ngTemplateOutlet="navigation" /></div>
+  </dialog>
+  <div class="main-shell min-w-0">
+    <header class="flex h-20 items-center justify-between gap-3 border-b border-line px-5 sm:px-8 lg:px-10">
+      <div class="flex min-w-0 items-center gap-3"><button class="rounded-lg p-2 text-muted hover:bg-line md:hidden" aria-label="Open navigation" aria-haspopup="dialog" (click)="openDrawer()"><app-icon name="menu" /></button><p class="truncate text-xs text-muted"><span class="hidden sm:inline">Workspace <span class="mx-3 text-line">/</span></span><span class="text-ink">Learning library</span></p></div>
+      <a class="flex shrink-0 items-center gap-2 text-xs text-muted transition hover:text-lavender" href="http://127.0.0.1:8055" target="_blank" rel="noopener">Open Directus <app-icon name="external" /></a>
+    </header>
+    <main id="content" tabindex="-1" class="mx-auto w-full max-w-[1600px] px-5 py-8 sm:px-8 lg:px-10"><router-outlet /></main>
+    <footer class="mx-5 mt-8 flex flex-wrap justify-between gap-3 border-t border-line py-6 text-[10px] text-muted sm:mx-8 lg:mx-10"><span>Directus Learn / Computer engineering</span><span>Your next idea starts here.</span></footer>
+  </div>
+</div>

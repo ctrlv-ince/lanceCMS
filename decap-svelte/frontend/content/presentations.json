@@ -1,0 +1,25 @@
+{
+	"folderUrl": "https://drive.google.com/drive/folders/1wVjZpEpsL4X6q3m8f6rrLfrVZqH8q7ua",
+	"presentations": [
+		{
+			"slug": "node-red-visual-iot-programming",
+			"title": "Node-RED FINAL.pptx",
+			"driveId": "1UHVpF7uN2dBZ1gLX3QtRBfi6pHkmBk0J",
+			"category": "Node-RED",
+			"color": "#56d5d0",
+			"technologies": ["Raspberry Pi", "MQTT", "Node-RED"],
+			"thumbnail": "/images/courses/node-red-iot.png",
+			"thumbnailAlt": "Illustration of Raspberry Pi sensor data flowing through connected Node-RED nodes into a live dashboard."
+		},
+		{
+			"slug": "raspi-2-advanced-sensor-applications",
+			"title": "Raspi 2 PRESENTATION (5).pptx",
+			"driveId": "1pdVk7mxY7otUqd6CH_F3L_AQO7XHz5na",
+			"category": "Raspberry Pi",
+			"color": "#a795ff",
+			"technologies": ["Raspberry Pi", "ESP32", "MQTT", "PostgreSQL", "Python", "Next.js"],
+			"thumbnail": "/images/courses/raspberry-pi-sensors.png",
+			"thumbnailAlt": "Illustration of a Raspberry Pi, ESP32 board, and temperature-humidity sensor under blue and violet lighting."
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "directus-learning-stack",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/directus-stack.mjs setup",
+    "start": "node scripts/directus-stack.mjs start",
+    "stop": "node scripts/directus-stack.mjs stop",
+    "status": "node scripts/directus-stack.mjs status",
+    "restart:api": "node scripts/directus-stack.mjs restart-api",
+    "import:presentations": "node scripts/import-directus-presentations.mjs",
+    "verify": "node scripts/verify-directus.mjs",
+    "build": "npm --prefix frontend run build"
+  }
+}

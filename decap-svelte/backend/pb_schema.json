@@ -1,0 +1,193 @@
+[
+  {
+    "id": "posts_collection",
+    "name": "posts",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "field_title",
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 500 }
+      },
+      {
+        "id": "field_slug",
+        "name": "slug",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 200, "pattern": "^[a-z0-9-]+$" }
+      },
+      {
+        "id": "field_excerpt",
+        "name": "excerpt",
+        "type": "text",
+        "required": false,
+        "options": { "max": 500 }
+      },
+      {
+        "id": "field_body",
+        "name": "body",
+        "type": "editor",
+        "required": false,
+        "options": { "convertUrls": false }
+      },
+      {
+        "id": "field_tags",
+        "name": "tags",
+        "type": "json",
+        "required": false
+      },
+      {
+        "id": "field_thumbnail",
+        "name": "thumbnail",
+        "type": "file",
+        "required": false,
+        "options": { "maxSelect": 1, "maxSize": 5242880, "mimeTypes": ["image/jpeg", "image/png", "image/webp", "image/gif"] }
+      },
+      {
+        "id": "field_status",
+        "name": "status",
+        "type": "select",
+        "required": true,
+        "options": { "maxSelect": 1, "values": ["draft", "published", "archived"] }
+      },
+      {
+        "id": "field_date",
+        "name": "date",
+        "type": "date",
+        "required": true,
+        "options": {}
+      }
+    ],
+    "indexes": ["CREATE UNIQUE INDEX idx_posts_slug ON posts (slug)"],
+    "listRule": "status = 'published'",
+    "viewRule": "status = 'published'",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": "@request.auth.id != ''",
+    "options": {}
+  },
+  {
+    "id": "pages_collection",
+    "name": "pages",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "field_page_title",
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 300 }
+      },
+      {
+        "id": "field_page_slug",
+        "name": "slug",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 200 }
+      },
+      {
+        "id": "field_page_description",
+        "name": "description",
+        "type": "text",
+        "required": false,
+        "options": { "max": 500 }
+      },
+      {
+        "id": "field_page_body",
+        "name": "body",
+        "type": "editor",
+        "required": false,
+        "options": {}
+      },
+      {
+        "id": "field_page_published",
+        "name": "published",
+        "type": "bool",
+        "required": false,
+        "options": {}
+      }
+    ],
+    "indexes": ["CREATE UNIQUE INDEX idx_pages_slug ON pages (slug)"],
+    "listRule": "published = true",
+    "viewRule": "published = true",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": "@request.auth.id != ''",
+    "options": {}
+  },
+  {
+    "id": "courses_collection",
+    "name": "courses",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "field_course_title",
+        "name": "title",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 300 }
+      },
+      {
+        "id": "field_course_slug",
+        "name": "slug",
+        "type": "text",
+        "required": true,
+        "options": { "min": 1, "max": 200 }
+      },
+      {
+        "id": "field_course_instructor",
+        "name": "instructor",
+        "type": "text",
+        "required": false,
+        "options": { "max": 200 }
+      },
+      {
+        "id": "field_course_cover",
+        "name": "cover",
+        "type": "file",
+        "required": false,
+        "options": { "maxSelect": 1, "maxSize": 10485760, "mimeTypes": ["image/jpeg", "image/png", "image/webp"] }
+      },
+      {
+        "id": "field_course_description",
+        "name": "description",
+        "type": "text",
+        "required": false,
+        "options": { "max": 1000 }
+      },
+      {
+        "id": "field_course_level",
+        "name": "level",
+        "type": "select",
+        "required": true,
+        "options": { "maxSelect": 1, "values": ["beginner", "intermediate", "advanced"] }
+      },
+      {
+        "id": "field_course_published",
+        "name": "published",
+        "type": "bool",
+        "required": false,
+        "options": {}
+      },
+      {
+        "id": "field_course_body",
+        "name": "body",
+        "type": "editor",
+        "required": false,
+        "options": {}
+      }
+    ],
+    "indexes": ["CREATE UNIQUE INDEX idx_courses_slug ON courses (slug)"],
+    "listRule": "published = true",
+    "viewRule": "published = true",
+    "createRule": "@request.auth.id != ''",
+    "updateRule": "@request.auth.id != ''",
+    "deleteRule": "@request.auth.id != ''",
+    "options": {}
+  }
+]

@@ -1,0 +1,124 @@
+backend:
+  # test-repo stores content in memory/localStorage — perfect for local development
+  # No Git credentials or proxy server needed
+  # Switch to 'github' or 'gitlab' backend for production
+  name: test-repo
+
+# Where media files are stored (served through SvelteKit static)
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+# Site URL
+site_url: http://localhost:5173
+
+# Display URL for the CMS header
+display_url: http://localhost:5173
+
+# Content collections
+collections:
+  # Blog / Articles
+  - name: "posts"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        required: true
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - label: "Draft"
+            value: "draft"
+          - label: "Published"
+            value: "published"
+          - label: "Archived"
+            value: "archived"
+        default: "draft"
+      - label: "Featured Image"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # Pages (static pages like About, Contact)
+  - name: "pages"
+    label: "Pages"
+    label_singular: "Page"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+      - label: "Meta Description"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # The presentation library displayed on the learning platform.
+  - name: "courses"
+    label: "Course Library"
+    files:
+      - name: "presentations"
+        label: "PowerPoint Presentations"
+        file: "content/presentations.json"
+        fields:
+          - { label: "Google Drive Folder", name: "folderUrl", widget: "string" }
+          - label: "Presentations"
+            name: "presentations"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "File Name", name: "title", widget: "string" }
+              - label: "URL Slug"
+                name: "slug"
+                widget: "string"
+                pattern: ["^[a-z0-9]+(?:-[a-z0-9]+)*$", "Use lowercase letters, numbers, and hyphens."]
+              - label: "Google Drive File ID"
+                name: "driveId"
+                widget: "string"
+                hint: "The ID between /d/ and /view in the shared file link."
+                pattern: ["^[A-Za-z0-9_-]+$", "Enter the file ID, not the full URL."]
+              - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+              - { label: "Thumbnail Description", name: "thumbnailAlt", widget: "string" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Accent Color", name: "color", widget: "color", default: "#a795ff" }
+              - { label: "Technologies", name: "technologies", widget: "list" }

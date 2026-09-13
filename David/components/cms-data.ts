@@ -24,6 +24,7 @@ export const projects: CmsProject[] = [
     accentSoft: "#F0EDFF",
     mark: "D",
     lectureTopics: ["Microprocessor History", "SAP 1", "SAP 2"],
+    studioUrl: "http://127.0.0.1:4200",
   },
   {
     name: "Sanity",
@@ -40,14 +41,15 @@ export const projects: CmsProject[] = [
   },
   {
     name: "Decap CMS",
-    shortName: "D",
+    shortName: "DC",
     description: "A Git-based CMS that stores content directly in a repository.",
-    frontend: "Svelte",
+    frontend: "SvelteKit",
     backend: "PocketBase",
     database: "SQLite",
     accent: "#13A97A",
     accentSoft: "#E9FAF4",
-    mark: "D",
+    mark: "DC",
     lectureTopics: ["Raspberry Pi 2", "Raspberry Pi 3"],
+    studioUrl: "http://localhost:5173",
   },
 ];

@@ -31,3 +31,9 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Local Directus / PostgreSQL runtime and Angular cache
+.directus-local/
+.angular/
+cms/uploads/*
+!cms/uploads/.gitkeep
