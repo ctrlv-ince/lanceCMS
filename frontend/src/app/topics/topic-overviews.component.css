@@ -1,0 +1,10 @@
+:host { display: block; }
+.learning-card-label { color: var(--accent); }
+.learning-card-video a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.feature-chip, .summary-arrow { color: var(--accent); }
+.board-modules { position: absolute; inset: 0; pointer-events: none; }
+.board-module { position: absolute; padding: 7px 9px; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 5px; background: #101628e8; color: var(--accent); font: 7px ui-monospace, monospace; letter-spacing: .07em; transform: perspective(350px) rotateX(20deg) rotateY(-10deg); box-shadow: 0 3px #020617, 0 4px #334155, 0 0 12px color-mix(in srgb, var(--accent) 7%, transparent); }
+.module-left-top { top: 29%; left: 5%; }.module-right-top { top: 29%; right: 5%; }.module-left-bottom { bottom: 22%; left: 5%; }.module-right-bottom { bottom: 22%; right: 5%; }
+.board-module::after { content: ''; position: absolute; top: 50%; left: 100%; width: 18px; border-top: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); }.module-right-top::after, .module-right-bottom::after { left: auto; right: 100%; }
+.board-module i { position: absolute; top: 4px; right: 4px; width: 2px; height: 2px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+@media (prefers-reduced-motion: reduce) { .board-module { transition: none; } }

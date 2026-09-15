@@ -1,0 +1,295 @@
+.ds-learning-guide {
+	margin-top: 64px;
+}
+.ds-study-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 24px 0;
+	border-top: 1px solid #ffffff14;
+}
+.ds-study-nav a {
+	border: 1px solid #34435c;
+	background: #101b30;
+	padding: 10px 13px;
+	border-radius: 9px;
+	font-size: 12px;
+	color: #aebfd9;
+}
+.ds-study-nav a:hover {
+	color: var(--ds-accent);
+	border-color: var(--ds-accent);
+}
+.ds-learning-guide .ds-section {
+	scroll-margin-top: 24px;
+}
+.ds-learning-guide p,
+.ds-learning-guide li,
+.ds-learning-guide dd {
+	font-size: 14px;
+	line-height: 1.9;
+	color: #afc0d7;
+}
+.ds-learning-guide h3 {
+	font-size: 17px;
+	line-height: 1.5;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+.ds-study-intro {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 30px;
+	padding: 28px;
+	border-radius: 16px;
+}
+.ds-study-intro h3:not(:first-child) {
+	margin-top: 24px;
+}
+.ds-study-intro ul {
+	padding-left: 20px;
+}
+.ds-study-intro li + li {
+	margin-top: 12px;
+}
+.ds-roadmap {
+	padding-left: 36px;
+	list-style: decimal-leading-zero;
+	margin-top: 28px;
+}
+.ds-roadmap li {
+	padding: 18px 24px;
+	border-left: 1px solid #34435c;
+}
+.ds-roadmap li::marker {
+	color: var(--ds-accent);
+	font-weight: 600;
+}
+.ds-roadmap .ds-checkpoint {
+	margin-top: 10px;
+	font-size: 13px;
+}
+.ds-checkpoint strong,
+.ds-example-note > strong,
+.ds-answer-feedback strong {
+	color: var(--ds-accent);
+}
+.ds-study-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+}
+.ds-study-panel {
+	min-width: 0;
+	border-radius: 16px;
+	padding: 26px;
+}
+.ds-example-note {
+	margin-top: 18px;
+	padding: 16px;
+	border-left: 2px solid var(--ds-accent);
+	background: #ffffff04;
+	border-radius: 0 8px 8px 0;
+}
+.ds-example-note > strong {
+	display: block;
+	font-size: 11px;
+	margin-bottom: 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+.ds-worked-example {
+	margin-bottom: 20px;
+}
+.ds-worked-example pre {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	background: #040b1a;
+	border: 1px solid #25334d;
+	border-radius: 10px;
+	color: #c5e4e9;
+	padding: 20px;
+	margin: 20px 0;
+	font:
+		13px/1.9 ui-monospace,
+		Consolas,
+		monospace;
+}
+.ds-learning-resource {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.ds-learning-resource h3 {
+	margin: 0;
+}
+.ds-learning-resource h3 a:hover {
+	color: var(--ds-accent);
+	text-decoration: underline;
+}
+.ds-resource-provider {
+	color: #8fa6c5;
+	font-size: 12px;
+}
+.ds-learning-resource .ds-example-note {
+	margin: 0;
+}
+.ds-learning-resource .ds-resource-context {
+	font-size: 12px;
+	color: #8fa6c5;
+}
+.ds-learning-resource .ds-button {
+	align-self: flex-start;
+	margin-top: auto;
+}
+.ds-misconceptions {
+	display: grid;
+	gap: 12px;
+}
+.ds-misconceptions > div {
+	padding: 22px;
+	border-radius: 12px;
+}
+.ds-misconceptions dt {
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.ds-misconceptions dd {
+	margin: 0;
+}
+.ds-study-panel details {
+	margin-top: 20px;
+	border-top: 1px solid #25334d;
+	padding-top: 16px;
+}
+.ds-study-panel summary {
+	color: var(--ds-accent);
+	font-size: 13px;
+	cursor: pointer;
+}
+.ds-study-panel details p {
+	margin-top: 12px;
+}
+.ds-knowledge-form fieldset {
+	border: 0;
+	border-bottom: 1px solid #25334d;
+	padding: 12px 0 24px;
+	margin-bottom: 24px;
+	min-width: 0;
+}
+.ds-knowledge-form legend {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.6;
+}
+.ds-knowledge-form label {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-top: 10px;
+	padding: 12px 14px;
+	border: 1px solid #25334d;
+	border-radius: 8px;
+	cursor: pointer;
+	color: #afc0d7;
+	font-size: 14px;
+	line-height: 1.7;
+}
+.ds-knowledge-form input {
+	margin-top: 5px;
+	accent-color: var(--ds-accent);
+	flex-shrink: 0;
+}
+.ds-knowledge-form label:has(input:checked) {
+	border-color: var(--ds-accent);
+	background: #ffffff04;
+}
+.ds-knowledge-form .ds-answer-feedback {
+	padding: 14px;
+	margin-top: 14px;
+	border-radius: 8px;
+	background: #ffffff04;
+}
+.ds-knowledge-form .ds-quiz-status {
+	width: 100%;
+	font-size: 12px;
+}
+.ds-overview-entry {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.ds-overview-entry .ds-overview-card {
+	flex: 1;
+}
+.ds-card-objectives {
+	padding-left: 17px;
+	color: #9fb2cc;
+	font-size: 12px;
+	line-height: 1.9;
+	margin: 12px 0 20px;
+}
+.ds-card-objectives li + li {
+	margin-top: 7px;
+}
+.ds-card-study-label {
+	margin-top: 22px;
+	color: var(--ds-accent);
+	font-size: 9px;
+	letter-spacing: 0.1em;
+}
+.ds-card-study-meta {
+	display: block;
+	margin-bottom: 24px;
+	font-size: 10px;
+	color: #8fa6c5;
+	line-height: 1.8;
+}
+.ds-card-video {
+	padding: 20px 24px;
+	margin-top: 12px;
+	border-radius: 14px;
+}
+.ds-card-video > span {
+	color: var(--ds-accent);
+	font-size: 9px;
+	letter-spacing: 0.1em;
+}
+.ds-card-video a {
+	display: block;
+	margin: 12px 0 8px;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.7;
+}
+.ds-card-video a:hover {
+	text-decoration: underline;
+}
+.ds-card-video small {
+	color: #8fa6c5;
+	font-size: 10px;
+	line-height: 1.8;
+}
+.ds-card-video a:focus-visible,
+.ds-learning-guide summary:focus-visible {
+	outline: 2px solid var(--ds-accent);
+	outline-offset: 5px;
+}
+@media (max-width: 760px) {
+	.ds-study-grid,
+	.ds-study-intro {
+		grid-template-columns: 1fr;
+	}
+	.ds-study-panel,
+	.ds-study-intro {
+		padding: 20px;
+	}
+	.ds-roadmap li {
+		padding: 16px;
+	}
+	.ds-worked-example pre {
+		padding: 14px;
+		font-size: 12px;
+	}
+}

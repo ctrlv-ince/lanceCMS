@@ -1,0 +1,38 @@
+<a routerLink="/" class="back-link">← Back to course library</a>
+<div class="topic-exhibit" [attr.data-theme]="selected().theme">
+  <header class="exhibit-hero">
+    <div class="hero-copy">
+      <span class="section-kicker"><i class="live-indicator"></i>NEW / INTERACTIVE LEARNING SPACE</span>
+      <h1 class="history-title">See the machine.<br>Connect the ideas.</h1>
+      <h2>New Learning Content</h2>
+      <p>Explore the new interactive learning material and visual summaries. Travel through processor history, then look inside SAP-1 and SAP-2.</p>
+      <div class="hero-actions"><button class="topic-button" (click)="explore(playground)">Explore the visuals <span>↗</span></button><a routerLink="/" class="topic-button ghost">Back to Topics <span>→</span></a></div>
+      <div class="hero-caption"><span>HISTORY / TIMELINE</span><span>ARCHITECTURE / EXPLORATION</span></div>
+    </div>
+    <div class="hero-processor"><span class="binary-backdrop" aria-hidden="true">01001001<br>10110100<br>00101110</span><app-cpu3d [label]="selected().theme === 'history' ? 'CPU EVOLUTION' : selected().label + ' CPU'" [cores]="selected().cores" [advanced]="selected().slug === 'sap-2'" /></div>
+  </header>
+  <section #playground appReveal class="exhibit-section" tabindex="-1" aria-labelledby="playground-title">
+    <div class="section-heading"><span class="section-kicker">01 / CHOOSE YOUR EXPLORATION</span><h2 id="playground-title">Three perspectives on computing.</h2><p>Select a topic to change the exhibition. These short visual explanations complement the complete lessons in your course library.</p></div>
+    <div class="era-navigation" aria-label="Choose an interactive topic">
+      @for (topic of topics; track topic.slug) {<button [class.active]="selectedSlug() === topic.slug" [attr.aria-pressed]="selectedSlug() === topic.slug" (click)="selectedSlug.set(topic.slug)">{{ topic.label }}</button>}
+    </div>
+    <div class="section-heading" aria-live="polite"><span class="section-kicker">{{ selected().label }}</span><h2>{{ selected().subtitle }}</h2><p>{{ selected().description }}</p></div>
+    <div class="summary-stats">@for (item of selected().specs; track item.label) {<app-summary-card [item]="item" />}</div>
+    <div class="mt-8">
+      @if (selected().theme === 'history') {<app-timeline />}
+      @else {<app-architecture [nodes]="selected().architecture" />}
+    </div>
+    @if (selected().slug === 'sap-1') {
+      <div class="section-heading mt-8"><span class="section-kicker">THE INSTRUCTION MODULES</span><h2>Five operations to follow.</h2><p>These are the main SAP-1 operations. Open the visual summary to step through a short program and watch the registers change.</p></div>
+      <div class="instruction-grid">@for (instruction of instructions; track instruction.code) {<app-instruction-card [code]="instruction.code" [bits]="instruction.bits" [description]="instruction.description" />}</div>
+    } @else if (selected().slug === 'sap-2') {
+      <div class="section-heading mt-8"><span class="section-kicker">THE INSTRUCTION FAMILIES</span><h2>More ways to work with data.</h2><p>Explore the groups below. Open the visual summary to experiment with the sign and zero flags.</p></div>
+      <div class="instruction-family-grid">@for (group of groups; track group.label) {<app-summary-card [item]="group" />}</div>
+    }
+  </section>
+  <section appReveal class="exhibit-finale" aria-labelledby="continue-title">
+    <div><span class="section-kicker">02 / KEEP EXPLORING</span><h2 id="continue-title">Go deeper into {{ selected().label }}.</h2><p>The interactive summary and your original full lesson are both available.</p></div>
+    <div class="finale-actions"><a class="topic-button" [routerLink]="['/topics', selected().slug, 'summary']">View Interactive Summary →</a><a class="topic-button ghost" [routerLink]="['/courses', selected().slug]">Read Full Lesson →</a></div>
+  </section>
+  <p class="exhibit-footnote">Conceptual processor models and simplified architecture diagrams. Complete materials remain in the original lessons.</p>
+</div>

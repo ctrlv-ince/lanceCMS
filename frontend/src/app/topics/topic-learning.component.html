@@ -1,0 +1,49 @@
+<div class="learning-guide">
+  <nav class="study-navigation" aria-label="Study guide sections">
+    <a href="#learning-plan">Learning plan</a><a href="#detailed-explanations">Explanations</a>
+    <a href="#worked-examples">Worked examples</a><a href="#learning-resources">YouTube & references</a>
+    <a href="#learning-practice">Practice</a><a href="#knowledge-check">Knowledge check</a>
+  </nav>
+  <section id="learning-plan">
+    <header><span class="study-label">YOUR LEARNING PLAN</span><h2>Understand the topic, one step at a time.</h2><p>{{ guide.level }}</p></header>
+    <div class="study-intro"><div><h3>Before you start</h3><p>{{ guide.prerequisites }}</p><h3>What this guide covers</h3><p>{{ guide.scope }}</p></div>
+      <div><h3>By the end, you should be able to</h3><ul>@for (objective of guide.objectives; track objective) {<li>{{ objective }}</li>}</ul></div></div>
+    <ol class="study-roadmap">@for (step of guide.roadmap; track step.title) {<li><h3>{{ step.title }}</h3><p>{{ step.action }}</p><p class="checkpoint"><strong>Checkpoint:</strong> {{ step.checkpoint }}</p></li>}</ol>
+  </section>
+  <section id="detailed-explanations">
+    <header><span class="study-label">DETAILED EXPLANATIONS</span><h2>Connect each idea to a concrete behavior.</h2><p>Read the explanation, then use the example to check your understanding.</p></header>
+    <div class="study-grid">@for (lesson of guide.lessons; track lesson.title) {<article class="study-panel"><h3>{{ lesson.title }}</h3><p>{{ lesson.explanation }}</p><div class="example-note"><strong>Example</strong><p>{{ lesson.example }}</p></div></article>}</div>
+  </section>
+  <section id="worked-examples">
+    <header><span class="study-label">WORKED EXAMPLES</span><h2>Follow the reasoning, step by step.</h2><p>Compare the examples with the interactive demonstrations and your complete lesson.</p></header>
+    @for (example of guide.examples; track example.title) {<article class="study-panel worked-example"><h3>{{ example.title }}</h3><p>{{ example.context }}</p><pre><code>{{ example.trace }}</code></pre><p>{{ example.explanation }}</p></article>}
+  </section>
+  <section id="learning-resources">
+    <header><span class="study-label">WATCH & READ</span><h2>YouTube lessons and reliable references.</h2><p>Each resource explains its purpose and gives you a study task. Links open in a new tab so you can keep this guide available.</p></header>
+    <div class="study-grid">@for (resource of guide.resources; track resource.url) {<article class="study-panel resource-panel">
+      <span class="study-label">{{ resource.kind === 'YouTube' ? '▶ YOUTUBE LESSON' : 'READING REFERENCE' }}</span>
+      <h3><a [href]="resource.url" target="_blank" rel="noopener noreferrer">{{ resource.title }} ↗</a></h3><span class="resource-provider">{{ resource.provider }}</span>
+      <p>{{ resource.focus }}</p><div class="example-note"><strong>Study task</strong><p>{{ resource.task }}</p></div><p class="resource-context">{{ resource.context }}</p>
+      <a class="study-button secondary" [href]="resource.url" target="_blank" rel="noopener noreferrer">{{ resource.kind === 'YouTube' ? 'Watch on YouTube' : 'Open reference' }} ↗</a>
+    </article>}</div>
+  </section>
+  <section>
+    <header><span class="study-label">COMMON MISUNDERSTANDINGS</span><h2>Check the distinctions that matter.</h2></header>
+    <dl class="misunderstandings">@for (mistake of guide.mistakes; track mistake.claim) {<div><dt>{{ mistake.claim }}</dt><dd>{{ mistake.correction }}</dd></div>}</dl>
+  </section>
+  <section id="learning-practice">
+    <header><span class="study-label">PUT IT INTO PRACTICE</span><h2>Explain it, predict it, then check it.</h2><p>Try each task before opening its expected result. These exercises do not require hardware.</p></header>
+    <div class="study-grid">@for (exercise of guide.practice; track exercise.title) {<article class="study-panel"><h3>{{ exercise.title }}</h3><p>{{ exercise.task }}</p><details><summary>Show expected result</summary><p>{{ exercise.expected }}</p></details></article>}</div>
+  </section>
+  <section id="knowledge-check">
+    <header><span class="study-label">KNOWLEDGE CHECK</span><h2>Can you explain the important parts?</h2><p>Three questions with feedback. Your answers stay on this page and do not change your course records.</p></header>
+    <form class="study-panel knowledge-form" (submit)="check($event)">
+      @for (question of guide.questions; track question.id) {<fieldset><legend>{{ question.prompt }}</legend>
+        @for (option of question.options; track option; let index = $index) {<label><input type="radio" [name]="guide.slug + '-' + question.id" [checked]="answers()[question.id] === index" (change)="choose(question.id, index)"><span>{{ option }}</span></label>}
+        @if (checked()) {<p class="answer-feedback"><strong>{{ answers()[question.id] === question.answer ? 'Correct.' : 'Review this idea.' }}</strong> {{ question.explanation }}</p>}
+      </fieldset>}
+      <div class="check-actions"><button type="submit" class="study-button" [disabled]="!complete()">Check my understanding</button><button type="button" class="study-button secondary" (click)="reset()">Reset answers</button>
+        <p aria-live="polite">{{ checked() ? score() + ' of ' + guide.questions.length + ' correct. Review the explanations and try again.' : 'Choose an answer for every question before checking.' }}</p></div>
+    </form>
+  </section>
+</div>

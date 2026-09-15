@@ -1,5 +1,6 @@
 import {definePlugin} from 'sanity'
-import {HomeDashboard} from '../components/HomeDashboard'
+import {HomeDashboardTool} from '../components/summaries/HomeDashboardTool'
+import {summaryRouter} from '../components/summaries/summary-router'
 
 export const homeDashboardPlugin = definePlugin({
   name: 'home-dashboard',
@@ -8,7 +9,8 @@ export const homeDashboardPlugin = definePlugin({
       name: 'home',
       title: 'Home',
       icon: () => '🏠',
-      component: HomeDashboard,
+      component: HomeDashboardTool,
+      router: summaryRouter,
     },
   ],
 })

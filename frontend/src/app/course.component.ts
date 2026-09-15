@@ -8,6 +8,7 @@ import {
   SafeResourceUrl,
 } from "@angular/platform-browser";
 import { ApiService, Course } from "./api.service";
+import { findTopic } from "./topics/topic-data";
 @Component({
   selector: "app-course",
   standalone: true,
@@ -24,6 +25,9 @@ import { ApiService, Course } from "./api.service";
           <p>{{ c.description }}</p>
         }
       </header>
+      @if (summary(c.slug)) {
+        <a class="secondary-button mt-5" [routerLink]="['/topics', c.slug, 'summary']">View Interactive Summary →</a>
+      }
       @if (previewUrl(); as preview) {
         <section class="topic-presentation" aria-label="Topic presentation">
           <div class="presentation-toolbar">
@@ -106,6 +110,7 @@ import { ApiService, Course } from "./api.service";
   `,
 })
 export class CourseComponent {
+  summary = findTopic;
   private api = inject(ApiService);
   private route = inject(ActivatedRoute);
   private title = inject(Title);

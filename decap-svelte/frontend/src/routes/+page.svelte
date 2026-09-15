@@ -3,6 +3,7 @@
 	import Icon from '$lib/Icon.svelte';
 	import CourseCard from '$lib/CourseCard.svelte';
 	import { presentations as courses } from '$lib/presentations';
+	import TopicOverviews from '$lib/summaries/TopicOverviews.svelte';
 	let filter = $state('All technologies');
 	let visible = $derived(
 		courses.filter((c) => filter === 'All technologies' || c.technologies.includes(filter))
@@ -50,6 +51,7 @@
 			{#each visible as course (course.slug)}<CourseCard {course} />{/each}
 		</div>
 	</section>
+	<TopicOverviews />
 	<section class="dashboard-section" id="ecosystem">
 		<div class="section-heading">
 			<div>

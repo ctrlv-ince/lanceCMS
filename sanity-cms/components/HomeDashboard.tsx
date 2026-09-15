@@ -1,5 +1,7 @@
 ﻿import React, {useState, useEffect} from 'react'
 
+import {TopicOverviews} from './summaries/TopicOverviews'
+
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   @keyframes lms-fadeIn     { from{opacity:0} to{opacity:1} }
@@ -354,9 +356,9 @@ function CourseCard({lec, onOpen, delay=0}: {lec:Lecture;onOpen:()=>void;delay?:
   )
 }
 
-export function HomeDashboard() {
+export function HomeDashboard({initialLectureId}: {initialLectureId?: string} = {}) {
   const [activeNav, setActiveNav] = useState('dashboard')
-  const [activeLec, setActiveLec] = useState<Lecture|null>(null)
+  const [activeLec, setActiveLec] = useState<Lecture|null>(() => LECTURES.find(lecture => lecture.id === initialLectureId) || null)
   return (
     <div style={{fontFamily:"'Inter',system-ui,-apple-system,sans-serif",minHeight:'100vh',background:'#050816',color:'#f0f4ff',display:'flex',overflow:'hidden'}}>
       <StyleInject/>
@@ -390,6 +392,7 @@ export function HomeDashboard() {
           <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:22,marginBottom:40}}>
             {LECTURES.map((lec,i)=><CourseCard key={lec.id} lec={lec} onOpen={()=>setActiveLec(lec)} delay={0.3+i*0.08}/>)}
           </div>
+          <TopicOverviews/>
           <div style={{paddingTop:18,borderTop:'1px solid rgba(255,255,255,0.05)',textAlign:'center',fontSize:11,color:'rgba(255,255,255,0.16)'}}>
             Built with 🤍 using <span style={{color:'#4F7CFF',fontWeight:600}}>Sanity Studio</span> · MicroLMS v2.0
           </div>
@@ -399,3 +402,5 @@ export function HomeDashboard() {
     </div>
   )
 }
+
+export {Sidebar as DashboardSidebar, StyleInject as DashboardStyles}

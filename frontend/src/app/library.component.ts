@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiService, Course } from './api.service';
 import { IconComponent } from './icon.component';
+import { TopicOverviewsComponent } from './topics/topic-overviews.component';
 
 @Component({
   selector: 'app-library', standalone: true,
-  imports: [RouterLink, DatePipe, IconComponent],
+  imports: [RouterLink, DatePipe, IconComponent, TopicOverviewsComponent],
   templateUrl: './library.component.html',
 })
 export class LibraryComponent {

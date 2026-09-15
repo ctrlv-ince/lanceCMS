@@ -8,12 +8,13 @@ import { Subject } from 'rxjs';
 // Compile the real component for focused signal/state checks without a browser.
 const output = new URL('./.angular/ui-check/', import.meta.url);
 await mkdir(output, { recursive: true });
-for (const file of ['api.service', 'icon.component', 'library.component']) {
+for (const file of ['api.service', 'icon.component', 'topics/topic-data', 'topics/topic-learning-data', 'topics/visual-behavior.directive', 'topics/visual-components', 'topics/topic-overviews.component', 'library.component']) {
   const source = await readFile(new URL(`./src/app/${file}.ts`, import.meta.url), 'utf8');
   const compiled = ts.transpileModule(source, { compilerOptions: {
     target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ES2022,
     experimentalDecorators: true,
-  } }).outputText.replace(/from '(.\/[^']+)'/g, "from '$1.mjs'");
+  } }).outputText.replace(/from '([.][.]?\/[^']+)'/g, "from '$1.mjs'");
+  await mkdir(new URL('.', new URL(`${file}.mjs`, output)), { recursive: true });
   await writeFile(new URL(`${file}.mjs`, output), compiled);
 }
 const { ApiService } = await import(new URL('api.service.mjs', output));

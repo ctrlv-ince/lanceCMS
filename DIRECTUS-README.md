@@ -1,5 +1,31 @@
 # Directus learning project
 
+## Interactive visual summaries
+
+The existing topic cards keep their original appearance and open the full lessons at `/courses/:slug`. Each of the three full lessons adds a **View Interactive Summary** button that opens a separate visual overview:
+
+- `http://127.0.0.1:4200/topics/microprocessor-history/summary` — selectable timeline eras, evolving CSS processor models, and a four-core illustration.
+- `http://127.0.0.1:4200/topics/sap-1/summary` — component exploration, five opcode modules, and a step-by-step `LDA E → ADD F → OUT → HLT` demonstration with memory and register values.
+- `http://127.0.0.1:4200/topics/sap-2/summary` — expanded architecture, capability cards, instruction families, and an 8-bit result demo showing sign and zero flags.
+
+Each **Read Full Lesson** or **Back to Full Lesson** button opens the existing `/courses/:slug` page backed by Directus, including its presentation or complete course notes. **Back to Topics** returns to the course library. The earlier `/topics/:slug` summary URLs remain available for compatibility. Summary pages never render the CMS body, objectives, or slide viewer. They check the existing published-only course endpoint before displaying a summary; missing, unpublished, and offline lessons show an unavailable state with retry. The full lessons, original cards, navigation, footer, Directus content, and backend remain intact.
+
+The implementation is in `frontend/src/app/topics`: shared CPU, architecture blocks/connections, data bus, summary cards, instruction modules, timeline, and motion directives. Short overview content lives in `topic-data.ts`, independently of the full reference in Directus. Processor models and diagrams are conceptual illustrations, and the SAP-1 trace is not a clock-accurate emulator. SAP-2's sign demo uses bit 7 and two’s complement; decrement wraps at eight bits.
+
+Existing navigation and footer are reused. Components work with mouse, keyboard, and touch, layouts adapt to smaller screens, and animations respect reduced-motion preferences. No WebGL or new packages are required.
+
+Start with `npm.cmd start` from the repository root. Validate with:
+
+```powershell
+npm.cmd run build
+node frontend/verify-library.mjs
+node frontend/verify-topics.mjs
+```
+
+The topic checks exercise publication failures, retry, cancellation when switching routes, register transfers through halt, and zero/sign boundary cases. The production build validates Angular templates. Visual browser QA remains manual when the Codex browser connection is unavailable; check all three topics on desktop and mobile, component focus/tap, the SAP-1 controls, timeline selection, the flag slider, and links to full lessons.
+
+Historical milestones were checked against [Intel’s historical timeline](https://timeline.intel.com/). The SAP-2 flag behavior follows [University of Hawaiʻi teaching notes](https://esb.ics.hawaii.edu/2003fall.ics331/oct22.html).
+
 This project uses all four requested technologies:
 
 | Component | Folder | Local URL / port |
