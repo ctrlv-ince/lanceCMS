@@ -9,3 +9,8 @@ dist
 David
 sanity-cms
 decap-svelte
+cms/.env
+backend/.env
+.env
+.env.*
+!.env.docker.example
