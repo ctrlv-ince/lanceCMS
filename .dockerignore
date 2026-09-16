@@ -1,0 +1,11 @@
+node_modules
+.directus-local
+.git
+.angular
+.vscode
+.idea
+*.log
+dist
+David
+sanity-cms
+decap-svelte

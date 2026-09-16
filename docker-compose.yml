@@ -1,0 +1,138 @@
+services:
+  # ── PostgreSQL 18 ──
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: directus_cluster
+      POSTGRES_PASSWORD: ${PG_ADMIN_PASSWORD}
+      DB_PASSWORD: ${DB_PASSWORD}
+      API_DB_PASSWORD: ${API_DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U directus_cluster"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ── Directus CMS ──
+  directus:
+    build:
+      context: .
+      target: directus
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8055"
+      PUBLIC_URL: "http://localhost:8055"
+      SECRET: ${SECRET}
+      DB_CLIENT: "pg"
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus_learning"
+      DB_USER: "directus_app"
+      DB_PASSWORD: ${DB_PASSWORD}
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      PROJECT_NAME: "Directus Learn"
+      TELEMETRY: "false"
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost,http://localhost:80"
+      WEBSOCKETS_ENABLED: "true"
+    ports:
+      - "8055:8055"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8055/server/ping || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    entrypoint: ["sh", "-c", "npx directus bootstrap && npx directus start"]
+
+  # ── Seed runner (one-shot) ──
+  seed:
+    build:
+      context: .
+      target: seed
+    depends_on:
+      directus:
+        condition: service_healthy
+    environment:
+      # The seed scripts read cms/.env, but in Docker we generate it at runtime
+      ADMIN_EMAIL: "admin@example.com"
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus_learning"
+      DB_USER: "directus_app"
+      DB_PASSWORD: ${DB_PASSWORD}
+    entrypoint: >
+      sh -c "
+        mkdir -p /app/cms &&
+        cat > /app/cms/.env <<EOF
+      HOST=\"0.0.0.0\"
+      PORT=\"8055\"
+      PUBLIC_URL=\"http://directus:8055\"
+      SECRET=\"${SECRET}\"
+      DB_CLIENT=\"pg\"
+      DB_HOST=\"postgres\"
+      DB_PORT=\"5432\"
+      DB_DATABASE=\"directus_learning\"
+      DB_USER=\"directus_app\"
+      DB_PASSWORD=\"${DB_PASSWORD}\"
+      ADMIN_EMAIL=\"admin@example.com\"
+      ADMIN_PASSWORD=\"${ADMIN_PASSWORD}\"
+      EOF
+        /app/docker/seed-entrypoint.sh
+      "
+    restart: "no"
+
+  # ── Feathers Backend ──
+  backend:
+    build:
+      context: .
+      target: backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      directus:
+        condition: service_healthy
+    environment:
+      PORT: "3030"
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus_learning"
+      DB_USER: "learning_reader"
+      DB_PASSWORD: ${API_DB_PASSWORD}
+      DIRECTUS_URL: "http://directus:8055"
+    ports:
+      - "3030:3030"
+    entrypoint: ["/bin/bash", "/app/docker/backend-entrypoint.sh"]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:3030/api/health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # ── Angular Frontend (Nginx) ──
+  frontend:
+    build:
+      context: .
+      target: frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "80:80"
+
+volumes:
+  pgdata:
