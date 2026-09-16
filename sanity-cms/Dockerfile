@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3333
 
 # Start Sanity Studio in dev mode
-CMD ["npm", "run", "dev"]
+CMD ["npx", "sanity", "dev", "--host", "0.0.0.0"]

@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Start Next.js in dev mode
-CMD ["npm", "run", "dev"]
+CMD ["npx", "next", "dev", "--hostname", "0.0.0.0"]
