@@ -132,5 +132,39 @@ services:
     ports:
       - "80:80"
 
+  # ── Projects Dashboard (Next.js) ──
+  projects-dashboard:
+    build:
+      context: ./David
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
+  # ── Sanity CMS Studio ──
+  sanity-studio:
+    build:
+      context: ./sanity-cms
+    restart: unless-stopped
+    ports:
+      - "3333:3333"
+
+  # ── Decap CMS SvelteKit Frontend ──
+  decap-frontend:
+    build:
+      context: ./decap-svelte/frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+
+  # ── PocketBase Backend for Decap ──
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      - pb_data:/pb_data
+
 volumes:
   pgdata:
+  pb_data:

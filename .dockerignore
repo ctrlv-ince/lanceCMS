@@ -6,9 +6,6 @@
 .idea
 *.log
 dist
-David
-sanity-cms
-decap-svelte
 cms/.env
 backend/.env
 .env
