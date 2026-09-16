@@ -76,20 +76,18 @@ services:
     entrypoint: >
       sh -c "
         mkdir -p /app/cms &&
-        cat > /app/cms/.env <<EOF
-      HOST=\"0.0.0.0\"
-      PORT=\"8055\"
-      PUBLIC_URL=\"http://directus:8055\"
-      SECRET=\"${SECRET}\"
-      DB_CLIENT=\"pg\"
-      DB_HOST=\"postgres\"
-      DB_PORT=\"5432\"
-      DB_DATABASE=\"directus_learning\"
-      DB_USER=\"directus_app\"
-      DB_PASSWORD=\"${DB_PASSWORD}\"
-      ADMIN_EMAIL=\"admin@example.com\"
-      ADMIN_PASSWORD=\"${ADMIN_PASSWORD}\"
-      EOF
+        echo 'HOST=\"0.0.0.0\"' > /app/cms/.env &&
+        echo 'PORT=\"8055\"' >> /app/cms/.env &&
+        echo 'PUBLIC_URL=\"http://directus:8055\"' >> /app/cms/.env &&
+        echo 'SECRET=\"${SECRET}\"' >> /app/cms/.env &&
+        echo 'DB_CLIENT=\"pg\"' >> /app/cms/.env &&
+        echo 'DB_HOST=\"postgres\"' >> /app/cms/.env &&
+        echo 'DB_PORT=\"5432\"' >> /app/cms/.env &&
+        echo 'DB_DATABASE=\"directus_learning\"' >> /app/cms/.env &&
+        echo 'DB_USER=\"directus_app\"' >> /app/cms/.env &&
+        echo 'DB_PASSWORD=\"${DB_PASSWORD}\"' >> /app/cms/.env &&
+        echo 'ADMIN_EMAIL=\"admin@example.com\"' >> /app/cms/.env &&
+        echo 'ADMIN_PASSWORD=\"${ADMIN_PASSWORD}\"' >> /app/cms/.env &&
         /app/docker/seed-entrypoint.sh
       "
     restart: "no"
