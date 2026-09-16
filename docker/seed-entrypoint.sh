@@ -12,8 +12,10 @@ sed -i 's|http://127\.0\.0\.1:8055|http://directus:8055|g' scripts/import-direct
 # Wait for Directus to be fully ready
 /app/docker/wait-for-url.sh http://directus:8055/server/ping 120
 
-echo "Directus is ready. Running seed scripts..."
+echo "Directus is ready. Creating admin user..."
+node scripts/ensure-directus-admin.mjs
 
+echo "Running seed scripts..."
 # Seed courses collection and starter data
 node scripts/seed-directus.mjs
 
