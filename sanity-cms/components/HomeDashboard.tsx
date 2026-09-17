@@ -1,4 +1,4 @@
-﻿import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import {TopicOverviews} from './summaries/TopicOverviews'
 
@@ -10,7 +10,7 @@ const CSS = `
   @keyframes lms-streak     { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
   @keyframes lms-progress   { from{width:0} to{width:var(--w)} }
   @keyframes lms-particle   { 0%{transform:translateY(0) translateX(0);opacity:0} 10%{opacity:0.7} 90%{opacity:0.7} 100%{transform:translateY(-100px) translateX(var(--dx,30px));opacity:0} }
-  .lms-nav { display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;color:rgba(255,255,255,0.4);transition:all 0.2s cubic-bezier(.4,0,.2,1);border:1px solid transparent;user-select:none; }
+  .lms-nav { display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:16px;font-weight:500;cursor:pointer;color:rgba(255,255,255,0.4);transition:all 0.2s cubic-bezier(.4,0,.2,1);border:1px solid transparent;user-select:none; }
   .lms-nav:hover { color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.05); }
   .lms-nav.active { color:#4F7CFF;background:rgba(79,124,255,0.1);border-color:rgba(79,124,255,0.2); }
   .lms-nav.active .lms-ni { filter:drop-shadow(0 0 5px rgba(79,124,255,0.9)); }
@@ -34,7 +34,7 @@ const CSS = `
   .lms-close:hover { background:rgba(255,255,255,0.18)!important; }
   .lms-modal-wrap { animation:lms-fadeIn 0.2s ease; }
   .lms-modal-box  { animation:lms-slideUp 0.3s ease; }
-  .lms-sl { font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 14px;margin:18px 0 6px; }
+  .lms-sl { font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0 14px;margin:18px 0 6px; }
 `
 
 function StyleInject() {
@@ -157,8 +157,8 @@ function Sidebar({active, onNav}: {active:string;onNav:(id:string)=>void}) {
             <div style={{position:'relative',width:38,height:38,borderRadius:11,background:'linear-gradient(135deg,#4F7CFF,#8B5CF6)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:18,boxShadow:'0 0 20px rgba(79,124,255,0.5)'}}>🎛</div>
           </div>
           <div>
-            <div style={{fontSize:15,fontWeight:900,letterSpacing:-.4,background:'linear-gradient(135deg,#f0f4ff,#7B8CC8)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>MicroLMS</div>
-            <div style={{fontSize:9,color:'rgba(255,255,255,0.28)',fontWeight:600,letterSpacing:.5,marginTop:1}}>v2.0 · Sanity Studio</div>
+            <div style={{fontSize:18,fontWeight:900,letterSpacing:-.4,background:'linear-gradient(135deg,#f0f4ff,#7B8CC8)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>MicroLMS</div>
+            <div style={{fontSize:12,color:'rgba(255,255,255,0.28)',fontWeight:600,letterSpacing:.5,marginTop:1}}>v2.0 · Sanity Studio</div>
           </div>
         </div>
       </div>
@@ -169,7 +169,7 @@ function Sidebar({active, onNav}: {active:string;onNav:(id:string)=>void}) {
             <div key={item.id} className={`lms-nav${active===item.id?' active':''}`} onClick={()=>onNav(item.id)}>
               <span className="lms-ni" style={{fontSize:14,width:20,textAlign:'center'}}>{item.icon}</span>
               <span style={{flex:1}}>{item.label}</span>
-              {item.badge && <span style={{fontSize:9,fontWeight:800,padding:'2px 6px',borderRadius:6,background:'rgba(79,124,255,0.2)',color:'#4F7CFF'}}>{item.badge}</span>}
+              {item.badge && <span style={{fontSize:12,fontWeight:800,padding:'2px 6px',borderRadius:6,background:'rgba(79,124,255,0.2)',color:'#4F7CFF'}}>{item.badge}</span>}
             </div>
           ))}
         </div>
@@ -178,8 +178,8 @@ function Sidebar({active, onNav}: {active:string;onNav:(id:string)=>void}) {
         <div style={{display:'flex',alignItems:'center',gap:9,padding:'10px',borderRadius:12,background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
           <div style={{width:32,height:32,borderRadius:9,background:'linear-gradient(135deg,#4F7CFF,#8B5CF6)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:14,flexShrink:0,boxShadow:'0 0 12px rgba(79,124,255,0.4)'}}>👤</div>
           <div style={{minWidth:0}}>
-            <div style={{fontSize:12,fontWeight:700,color:'#f0f4ff',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>Lance David</div>
-            <div style={{fontSize:10,color:'rgba(255,255,255,0.3)',marginTop:1}}>Engineering Student</div>
+            <div style={{fontSize:15,fontWeight:700,color:'#f0f4ff',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>Lance David</div>
+            <div style={{fontSize:13,color:'rgba(255,255,255,0.3)',marginTop:1}}>Engineering Student</div>
           </div>
         </div>
       </div>
@@ -202,18 +202,18 @@ function Hero() {
         <div>
           <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:10}}>
             <div style={{height:1,width:22,background:'rgba(79,124,255,0.6)'}}/>
-            <span style={{fontSize:9,fontWeight:700,letterSpacing:2.5,textTransform:'uppercase',color:'rgba(79,124,255,0.9)'}}>Microcontroller LMS</span>
+            <span style={{fontSize:12,fontWeight:700,letterSpacing:2.5,textTransform:'uppercase',color:'rgba(79,124,255,0.9)'}}>Microcontroller LMS</span>
           </div>
-          <h1 style={{fontSize:28,fontWeight:900,letterSpacing:-1,lineHeight:1.1,margin:'0 0 8px',background:'linear-gradient(135deg,#f0f4ff 20%,#7B8ECC 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>
+          <h1 style={{fontSize:34,fontWeight:900,letterSpacing:-1,lineHeight:1.1,margin:'0 0 8px',background:'linear-gradient(135deg,#f0f4ff 20%,#7B8ECC 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>
             {greeting}, Lance 👋
           </h1>
-          <p style={{fontSize:12,color:'rgba(255,255,255,0.38)',margin:'0 0 18px',lineHeight:1.6}}>
+          <p style={{fontSize:15,color:'rgba(255,255,255,0.38)',margin:'0 0 18px',lineHeight:1.6}}>
             {now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})} · Keep pushing forward.
           </p>
           <div style={{display:'flex',alignItems:'center',gap:10,flexWrap:'wrap'}}>
-            <div style={{animation:'lms-streak 2s ease infinite',display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(245,158,11,0.12)',border:'1px solid rgba(245,158,11,0.3)',fontSize:12,fontWeight:700,color:'#F59E0B'}}>🔥 1 Day Streak</div>
-            <div style={{display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(79,124,255,0.1)',border:'1px solid rgba(79,124,255,0.25)',fontSize:12,fontWeight:600,color:'#4F7CFF'}}>⚡ 150 XP</div>
-            <div style={{display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(0,245,212,0.08)',border:'1px solid rgba(0,245,212,0.2)',fontSize:12,fontWeight:600,color:'#00F5D4'}}>🏆 Beginner</div>
+            <div style={{animation:'lms-streak 2s ease infinite',display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(245,158,11,0.12)',border:'1px solid rgba(245,158,11,0.3)',fontSize:15,fontWeight:700,color:'#F59E0B'}}>🔥 1 Day Streak</div>
+            <div style={{display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(79,124,255,0.1)',border:'1px solid rgba(79,124,255,0.25)',fontSize:15,fontWeight:600,color:'#4F7CFF'}}>⚡ 150 XP</div>
+            <div style={{display:'inline-flex',alignItems:'center',gap:6,padding:'6px 13px',borderRadius:10,background:'rgba(0,245,212,0.08)',border:'1px solid rgba(0,245,212,0.2)',fontSize:15,fontWeight:600,color:'#00F5D4'}}>🏆 Beginner</div>
           </div>
         </div>
         <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:8,flexShrink:0}}>
@@ -224,7 +224,7 @@ function Hero() {
               <div style={{fontSize:9,color:'rgba(255,255,255,0.35)',fontWeight:600}}>Done</div>
             </div>
           </div>
-          <div style={{fontSize:10,color:'rgba(255,255,255,0.3)',fontWeight:600,textTransform:'uppercase',letterSpacing:.8}}>Overall Progress</div>
+          <div style={{fontSize:13,color:'rgba(255,255,255,0.3)',fontWeight:600,textTransform:'uppercase',letterSpacing:.8}}>Overall Progress</div>
         </div>
       </div>
     </div>
@@ -240,8 +240,8 @@ function StatCard({s, delay=0}: {s:typeof STATS[0];delay?:number}) {
         <div style={{width:38,height:38,borderRadius:10,background:s.bg,border:`1px solid ${s.color}33`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:16}}>{s.icon}</div>
         <div style={{width:7,height:7,borderRadius:'50%',background:s.color,boxShadow:`0 0 8px ${s.color}`,marginTop:4}}/>
       </div>
-      <div style={{fontSize:30,fontWeight:900,color:'#f0f4ff',letterSpacing:-1.5,lineHeight:1,marginBottom:4}}><Counter target={s.value} dec={dec}/></div>
-      <div style={{fontSize:11,fontWeight:500,color:'rgba(255,255,255,0.38)'}}>{s.label}</div>
+      <div style={{fontSize:36,fontWeight:900,color:'#f0f4ff',letterSpacing:-1.5,lineHeight:1,marginBottom:4}}><Counter target={s.value} dec={dec}/></div>
+      <div style={{fontSize:14,fontWeight:500,color:'rgba(255,255,255,0.38)'}}>{s.label}</div>
       <div style={{marginTop:10}}>
         <div className="lms-pbar">
           <div className="lms-pfill" style={{width:s.label==='Completed'?'0%':s.label==='XP Points'?'15%':s.label==='Study Hours'?'45%':'100%',background:`linear-gradient(90deg,${s.color}88,${s.color})`,['--w' as any]:s.label==='Completed'?'0%':s.label==='XP Points'?'15%':s.label==='Study Hours'?'45%':'100%'}}/>
@@ -256,11 +256,11 @@ function DiagramMosaic() {
     <div style={{marginBottom:28,animation:'lms-slideUp 0.5s 0.18s ease both'}}>
       <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:14}}>
         <div style={{height:1,width:18,background:'rgba(255,255,255,0.1)'}}/>
-        <span style={{fontSize:9,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.22)'}}>📷 Reference Diagrams</span>
+        <span style={{fontSize:12,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.22)'}}>📷 Reference Diagrams</span>
         <div style={{height:1,flex:1,background:'rgba(255,255,255,0.05)'}}/>
       </div>
       <div style={{marginBottom:8}}>
-        <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(0,245,212,0.5)',marginBottom:5}}>SAP-3 — Computer Architecture</div>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(0,245,212,0.5)',marginBottom:5}}>SAP-3 — Computer Architecture</div>
         <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
           {SAP3_IMGS.slice(0,3).map(d=>(<div key={d.src} className="lms-tile" style={{height:84,border:'1px solid rgba(0,245,212,0.12)'}}><img src={d.src} alt={d.alt}/></div>))}
         </div>
@@ -271,7 +271,7 @@ function DiagramMosaic() {
       </div>
       <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)',margin:'10px 0'}}/>
       <div>
-        <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(139,92,246,0.5)',marginBottom:5}}>RASPI-1 — Embedded Systems</div>
+        <div style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(139,92,246,0.5)',marginBottom:5}}>RASPI-1 — Embedded Systems</div>
         <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
           {RASPI_IMGS.slice(0,3).map(d=>(<div key={d.src} className="lms-tile" style={{height:84,border:'1px solid rgba(139,92,246,0.12)'}}><img src={d.src} alt={d.alt}/></div>))}
         </div>
@@ -293,8 +293,8 @@ function LecModal({lec, onClose}: {lec:Lecture;onClose:()=>void}) {
         <div style={{padding:'15px 22px',display:'flex',alignItems:'center',gap:12,background:`linear-gradient(135deg,${lec.accent}14,${lec.accentDark}08)`,borderBottom:`1px solid ${lec.accent}22`}}>
           <div style={{width:36,height:36,borderRadius:10,background:`linear-gradient(135deg,${lec.accent},${lec.accentDark})`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:17,flexShrink:0}}>🖥</div>
           <div style={{flex:1}}>
-            <div style={{fontSize:9,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:lec.accent,marginBottom:2}}>{lec.code} · Microcontroller LEC</div>
-            <div style={{fontSize:14,fontWeight:800,color:'#f0f4ff'}}>{lec.title}</div>
+            <div style={{fontSize:12,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:lec.accent,marginBottom:2}}>{lec.code} · Microcontroller LEC</div>
+            <div style={{fontSize:17,fontWeight:800,color:'#f0f4ff'}}>{lec.title}</div>
           </div>
           <button className="lms-close" onClick={onClose} style={{width:30,height:30,borderRadius:'50%',border:'none',background:'rgba(255,255,255,0.07)',color:'rgba(255,255,255,0.5)',fontSize:13,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',transition:'background 0.2s'}}>✕</button>
         </div>
@@ -302,8 +302,8 @@ function LecModal({lec, onClose}: {lec:Lecture;onClose:()=>void}) {
           ? <iframe src={lec.pptUrl} style={{flex:1,border:'none',background:'#050816'}} allowFullScreen title={lec.title}/>
           : <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:16}}>
               <div style={{fontSize:32}}>📋</div>
-              <div style={{fontSize:16,fontWeight:700,color:'rgba(255,255,255,0.6)'}}>Presentation Coming Soon</div>
-              <div style={{fontSize:12,color:'rgba(255,255,255,0.3)'}}>Upload via Structure → Lectures in Sanity Studio</div>
+              <div style={{fontSize:20,fontWeight:700,color:'rgba(255,255,255,0.6)'}}>Presentation Coming Soon</div>
+              <div style={{fontSize:15,color:'rgba(255,255,255,0.3)'}}>Upload via Structure → Lectures in Sanity Studio</div>
             </div>
         }
       </div>
@@ -320,35 +320,35 @@ function CourseCard({lec, onOpen, delay=0}: {lec:Lecture;onOpen:()=>void;delay?:
         <div style={{position:'absolute',inset:0,background:`linear-gradient(to bottom,rgba(5,8,22,0.1) 0%,rgba(5,8,22,0.95) 100%)`}}/>
         <div style={{position:'absolute',top:0,left:0,right:0,height:2,background:`linear-gradient(90deg,transparent,${lec.accent},transparent)`,boxShadow:`0 0 14px ${lec.accent}`}}/>
         <div style={{position:'absolute',top:14,left:14,display:'flex',gap:6}}>
-          <span style={{padding:'4px 10px',borderRadius:8,fontSize:9,fontWeight:800,letterSpacing:1,textTransform:'uppercase',background:`${lec.accent}20`,color:lec.accent,border:`1px solid ${lec.accent}40`,backdropFilter:'blur(12px)'}}>{lec.code}</span>
-          <span style={{padding:'4px 10px',borderRadius:8,fontSize:9,fontWeight:800,letterSpacing:1,textTransform:'uppercase',background:`${dc}18`,color:dc,border:`1px solid ${dc}40`,backdropFilter:'blur(12px)'}}>{lec.difficulty}</span>
+          <span style={{padding:'4px 10px',borderRadius:8,fontSize:12,fontWeight:800,letterSpacing:1,textTransform:'uppercase',background:`${lec.accent}20`,color:lec.accent,border:`1px solid ${lec.accent}40`,backdropFilter:'blur(12px)'}}>{lec.code}</span>
+          <span style={{padding:'4px 10px',borderRadius:8,fontSize:12,fontWeight:800,letterSpacing:1,textTransform:'uppercase',background:`${dc}18`,color:dc,border:`1px solid ${dc}40`,backdropFilter:'blur(12px)'}}>{lec.difficulty}</span>
         </div>
-        <div style={{position:'absolute',top:14,right:14,padding:'4px 10px',borderRadius:8,fontSize:9,fontWeight:700,background:lec.pptUrl?'rgba(0,245,212,0.18)':'rgba(245,158,11,0.18)',color:lec.pptUrl?'#00F5D4':'#F59E0B',border:`1px solid ${lec.pptUrl?'rgba(0,245,212,0.35)':'rgba(245,158,11,0.35)'}`,backdropFilter:'blur(12px)'}}>
+        <div style={{position:'absolute',top:14,right:14,padding:'4px 10px',borderRadius:8,fontSize:12,fontWeight:700,background:lec.pptUrl?'rgba(0,245,212,0.18)':'rgba(245,158,11,0.18)',color:lec.pptUrl?'#00F5D4':'#F59E0B',border:`1px solid ${lec.pptUrl?'rgba(0,245,212,0.35)':'rgba(245,158,11,0.35)'}`,backdropFilter:'blur(12px)'}}>
           {lec.pptUrl?'● Available':'◌ Coming Soon'}
         </div>
         <div style={{position:'absolute',bottom:14,left:14,display:'flex',alignItems:'center',gap:8}}>
-          <span style={{fontSize:10,color:'rgba(255,255,255,0.45)',fontWeight:600}}>⏱ {lec.duration}</span>
+          <span style={{fontSize:13,color:'rgba(255,255,255,0.45)',fontWeight:600}}>⏱ {lec.duration}</span>
           <span style={{width:3,height:3,borderRadius:'50%',background:'rgba(255,255,255,0.2)',display:'inline-block'}}/>
-          <span style={{fontSize:10,color:'rgba(255,255,255,0.45)',fontWeight:600}}>{lec.tag}</span>
+          <span style={{fontSize:13,color:'rgba(255,255,255,0.45)',fontWeight:600}}>{lec.tag}</span>
         </div>
       </div>
       <div style={{padding:'20px 22px 22px'}}>
-        <div style={{fontSize:18,fontWeight:900,color:'#f0f4ff',letterSpacing:-.5,lineHeight:1.2,marginBottom:4}}>{lec.title}</div>
-        <div style={{fontSize:11,fontWeight:600,color:lec.accent,marginBottom:10,letterSpacing:.3}}>{lec.subtitle}</div>
-        <p style={{fontSize:12,color:'rgba(255,255,255,0.4)',lineHeight:1.7,marginBottom:16}}>{lec.description}</p>
+        <div style={{fontSize:22,fontWeight:900,color:'#f0f4ff',letterSpacing:-.5,lineHeight:1.2,marginBottom:4}}>{lec.title}</div>
+        <div style={{fontSize:14,fontWeight:600,color:lec.accent,marginBottom:10,letterSpacing:.3}}>{lec.subtitle}</div>
+        <p style={{fontSize:15,color:'rgba(255,255,255,0.4)',lineHeight:1.7,marginBottom:16}}>{lec.description}</p>
         <div style={{marginBottom:16}}>
           <div style={{display:'flex',justifyContent:'space-between',marginBottom:6}}>
-            <span style={{fontSize:10,fontWeight:600,color:'rgba(255,255,255,0.28)'}}>Course Progress</span>
-            <span style={{fontSize:10,fontWeight:800,color:lec.accent}}>{lec.progress}%</span>
+            <span style={{fontSize:13,fontWeight:600,color:'rgba(255,255,255,0.28)'}}>Course Progress</span>
+            <span style={{fontSize:13,fontWeight:800,color:lec.accent}}>{lec.progress}%</span>
           </div>
           <div className="lms-pbar">
             <div className="lms-pfill" style={{width:`${lec.progress||0}%`,background:`linear-gradient(90deg,${lec.accentDark},${lec.accent})`,['--w' as any]:`${lec.progress||0}%`}}/>
           </div>
         </div>
         <div style={{display:'flex',flexWrap:'wrap',gap:5,marginBottom:18}}>
-          {lec.topics.map(t=>(<span key={t} className="lms-chip" style={{padding:'3px 10px',borderRadius:99,fontSize:9,fontWeight:700,background:`${lec.accent}0e`,color:`${lec.accent}cc`,border:`1px solid ${lec.accent}22`}}>{t}</span>))}
+          {lec.topics.map(t=>(<span key={t} className="lms-chip" style={{padding:'3px 10px',borderRadius:99,fontSize:12,fontWeight:700,background:`${lec.accent}0e`,color:`${lec.accent}cc`,border:`1px solid ${lec.accent}22`}}>{t}</span>))}
         </div>
-        <button className="lms-btn" onClick={onOpen} style={{width:'100%',padding:'13px 20px',borderRadius:13,border:'none',background:`linear-gradient(135deg,${lec.accent},${lec.accentDark})`,color:'#fff',fontSize:13,fontWeight:800,display:'flex',alignItems:'center',justifyContent:'center',gap:8,boxShadow:`0 4px 24px ${lec.glow}`,letterSpacing:.3}}>
+        <button className="lms-btn" onClick={onOpen} style={{width:'100%',padding:'13px 20px',borderRadius:13,border:'none',background:`linear-gradient(135deg,${lec.accent},${lec.accentDark})`,color:'#fff',fontSize:16,fontWeight:800,display:'flex',alignItems:'center',justifyContent:'center',gap:8,boxShadow:`0 4px 24px ${lec.glow}`,letterSpacing:.3}}>
           Open Lecture <span style={{fontSize:16}}>→</span>
         </button>
       </div>
@@ -376,15 +376,15 @@ export function HomeDashboard({initialLectureId}: {initialLectureId?: string} = 
           <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)',marginBottom:26}}/>
           <div style={{display:'flex',alignItems:'flex-end',justifyContent:'space-between',flexWrap:'wrap',gap:12,marginBottom:22,animation:'lms-slideUp 0.5s 0.26s ease both'}}>
             <div>
-              <div style={{fontSize:9,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(255,255,255,0.28)',marginBottom:5}}>🎓 Course Content</div>
-              <div style={{fontSize:21,fontWeight:900,letterSpacing:-.6,color:'#f0f4ff'}}>Lecture Presentations</div>
-              <div style={{fontSize:12,color:'rgba(255,255,255,0.35)',marginTop:4}}>Assigned to <span style={{color:'#FF4C6E',fontWeight:700}}>Sanity CMS</span> · Click a card to view slides</div>
+              <div style={{fontSize:12,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(255,255,255,0.28)',marginBottom:5}}>🎓 Course Content</div>
+              <div style={{fontSize:25,fontWeight:900,letterSpacing:-.6,color:'#f0f4ff'}}>Lecture Presentations</div>
+              <div style={{fontSize:15,color:'rgba(255,255,255,0.35)',marginTop:4}}>Assigned to <span style={{color:'#FF4C6E',fontWeight:700}}>Sanity CMS</span> · Click a card to view slides</div>
             </div>
             <div style={{display:'flex',gap:8}}>
               {[{l:'Total',v:'2',c:'#4F7CFF'},{l:'Ready',v:'2',c:'#00F5D4'},{l:'Pending',v:'0',c:'#F59E0B'}].map(s=>(
                 <div key={s.l} style={{textAlign:'center',padding:'10px 16px',borderRadius:12,background:'rgba(255,255,255,0.03)',border:'1px solid rgba(255,255,255,0.07)'}}>
-                  <div style={{fontSize:19,fontWeight:900,color:s.c,lineHeight:1}}>{s.v}</div>
-                  <div style={{fontSize:8,fontWeight:600,color:'rgba(255,255,255,0.28)',letterSpacing:.8,marginTop:3,textTransform:'uppercase'}}>{s.l}</div>
+                  <div style={{fontSize:22,fontWeight:900,color:s.c,lineHeight:1}}>{s.v}</div>
+                  <div style={{fontSize:11,fontWeight:600,color:'rgba(255,255,255,0.28)',letterSpacing:.8,marginTop:3,textTransform:'uppercase'}}>{s.l}</div>
                 </div>
               ))}
             </div>
@@ -393,7 +393,7 @@ export function HomeDashboard({initialLectureId}: {initialLectureId?: string} = 
             {LECTURES.map((lec,i)=><CourseCard key={lec.id} lec={lec} onOpen={()=>setActiveLec(lec)} delay={0.3+i*0.08}/>)}
           </div>
           <TopicOverviews/>
-          <div style={{paddingTop:18,borderTop:'1px solid rgba(255,255,255,0.05)',textAlign:'center',fontSize:11,color:'rgba(255,255,255,0.16)'}}>
+          <div style={{paddingTop:18,borderTop:'1px solid rgba(255,255,255,0.05)',textAlign:'center',fontSize:14,color:'rgba(255,255,255,0.16)'}}>
             Built with 🤍 using <span style={{color:'#4F7CFF',fontWeight:600}}>Sanity Studio</span> · MicroLMS v2.0
           </div>
         </div>

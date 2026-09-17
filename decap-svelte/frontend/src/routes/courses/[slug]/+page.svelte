@@ -59,7 +59,7 @@
 		margin: 24px 0;
 	}
 	h1 {
-		font-size: clamp(24px, 3vw, 36px);
+		font-size: clamp(30px, 3.5vw, 42px);
 		font-weight: 600;
 		line-height: 1.3;
 		margin-top: 12px;
@@ -87,7 +87,7 @@
 		align-items: center;
 		gap: 20px;
 		margin-top: 16px;
-		font-size: 11px;
+		font-size: 14px;
 		color: var(--color-text-muted);
 	}
 	.viewer-help > span {

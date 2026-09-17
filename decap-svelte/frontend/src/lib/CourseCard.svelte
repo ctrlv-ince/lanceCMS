@@ -73,13 +73,13 @@
 		height: 32px;
 		display: grid;
 		place-items: center;
-		font-size: 10px;
+		font-size: 13px;
 		color: white;
 		background: #10182bd9;
 		backdrop-filter: blur(8px);
 	}
 	.file-type {
-		font: 10px monospace;
+		font: 13px monospace;
 		color: #acb6cb;
 		letter-spacing: 1px;
 	}

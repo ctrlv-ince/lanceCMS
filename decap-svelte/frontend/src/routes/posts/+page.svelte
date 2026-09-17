@@ -65,12 +65,12 @@
 				type="search"
 				placeholder="Search posts..."
 				bind:value={searchQuery}
-				style="flex: 1; min-width: 200px; padding: 0.65rem 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text); font-size: 0.9rem; outline: none;"
+				style="flex: 1; min-width: 200px; padding: 0.65rem 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text); font-size: 1.1rem; outline: none;"
 			/>
 			{#if allTags.length > 0}
 				<select
 					bind:value={selectedTag}
-					style="padding: 0.65rem 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text); font-size: 0.9rem; cursor: pointer;"
+					style="padding: 0.65rem 1rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); color: var(--color-text); font-size: 1.1rem; cursor: pointer;"
 				>
 					<option value="">All Tags</option>
 					{#each allTags as tag}

@@ -17,19 +17,19 @@ export function CmsCard({ project }: CmsCardProps) {
           <div className="grid h-12 w-12 place-items-center rounded-2xl text-xl font-black" style={{ backgroundColor: project.accentSoft, color: project.accent }}>
             {project.mark}
           </div>
-          <span className="text-sm font-semibold text-slate">CMS project</span>
+          <span className="text-base font-semibold text-slate">CMS project</span>
         </div>
         <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: project.accent }} />
       </div>
 
       <h3 className="text-2xl font-bold tracking-tight text-ink">{project.name}</h3>
-      <p className="mt-3 min-h-[72px] text-[15px] leading-6 text-slate">{project.description}</p>
+      <p className="mt-3 min-h-[72px] text-lg leading-7 text-slate">{project.description}</p>
 
       <div className="my-7 border-t border-line" />
-      <p className="mb-4 text-xs font-bold uppercase tracking-[0.14em] text-slate">Tech stack</p>
+      <p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-slate">Tech stack</p>
       <dl className="space-y-3">
         {stackItems(project).map(([label, value]) => (
-          <div className="flex items-start justify-between gap-4 text-sm" key={label}>
+          <div className="flex items-start justify-between gap-4 text-base" key={label}>
             <dt className="text-slate">{label}</dt>
             <dd className="max-w-[65%] text-right font-semibold text-ink">{value}</dd>
           </div>
@@ -37,15 +37,15 @@ export function CmsCard({ project }: CmsCardProps) {
       </dl>
 
       <div className="mt-7 rounded-2xl p-4" style={{ backgroundColor: project.accentSoft }}>
-        <p className="text-xs font-bold uppercase tracking-[0.12em]" style={{ color: project.accent }}>LEC topics</p>
-        <p className="mt-2 text-sm font-semibold leading-6 text-ink">{project.lectureTopics.join(" / ")}</p>
+        <p className="text-sm font-bold uppercase tracking-[0.12em]" style={{ color: project.accent }}>LEC topics</p>
+        <p className="mt-2 text-base font-semibold leading-7 text-ink">{project.lectureTopics.join(" / ")}</p>
       </div>
 
       <a
         href={project.studioUrl ?? `#${project.name.toLowerCase().replaceAll(" ", "-")}`}
         target={project.studioUrl ? "_blank" : undefined}
         rel={project.studioUrl ? "noopener noreferrer" : undefined}
-        className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-white transition hover:brightness-95 focus:outline-none focus:ring-4 focus:ring-violet/20"
+        className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-base font-bold text-white transition hover:brightness-95 focus:outline-none focus:ring-4 focus:ring-violet/20"
         style={{ backgroundColor: project.accent }}
       >
         {project.studioUrl ? `Open ${project.name}` : "Open CMS"} <span aria-hidden="true">→</span>

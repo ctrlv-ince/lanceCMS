@@ -25,7 +25,7 @@
 		<!-- Back link -->
 		<a
 			href="/posts"
-			style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text-muted); font-size: 0.875rem; margin-bottom: 2rem; transition: color 150ms;"
+			style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 2rem; transition: color 150ms;"
 			onmouseenter={(e) => (e.currentTarget.style.color = 'var(--color-primary-hover)')}
 			onmouseleave={(e) => (e.currentTarget.style.color = 'var(--color-text-muted)')}
 		>
@@ -40,19 +40,19 @@
 					<span class="tag">{tag}</span>
 				{/each}
 			{/if}
-			<span style="font-size: 0.8rem; color: var(--color-text-subtle);">{formatDate(post.date)}</span>
+			<span style="font-size: 1.0rem; color: var(--color-text-subtle);">{formatDate(post.date)}</span>
 		</div>
 
 		<!-- Title -->
 		<h1
-			style="font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem;"
+			style="font-family: 'Outfit', sans-serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem;"
 		>
 			{post.title}
 		</h1>
 
 		{#if post.excerpt}
 			<p
-				style="font-size: 1.15rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 2rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;"
+				style="font-size: 1.35rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 2rem; border-left: 3px solid var(--color-primary); padding-left: 1rem;"
 			>
 				{post.excerpt}
 			</p>
@@ -77,7 +77,7 @@
 			style="
 				color: var(--color-text-muted);
 				line-height: 1.8;
-				font-size: 1.05rem;
+				font-size: 1.25rem;
 			"
 		>
 			<!-- Decap CMS body is markdown; render as-is in a pre for now -->

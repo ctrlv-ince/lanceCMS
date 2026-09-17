@@ -9,7 +9,7 @@
 }
 .qs-card-study-label {
   color: var(--qs-accent);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
 }
@@ -17,14 +17,14 @@
   padding-left: 17px;
   margin: 10px 0 16px;
   color: #b6c3d8;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.8;
 }
 .qs-card-objectives li + li {
   margin-top: 6px;
 }
 .qs-card-study-meta {
-  font-size: 10px;
+  font-size: 14px;
   color: #91a4bf;
   margin-bottom: 18px;
   line-height: 1.8;
@@ -41,12 +41,12 @@
 }
 .qs-card-watch > span {
   color: var(--qs-accent);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 1px;
   font-weight: 800;
 }
 .qs-card-watch a {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   font-weight: 700;
 }
@@ -55,7 +55,7 @@
 }
 .qs-card-watch small {
   color: #94a5c0;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.6;
 }
 .qs-study-nav {
@@ -72,7 +72,7 @@
   border-radius: 9px;
   background: #101a2c;
   color: #c0d0e5;
-  font-size: 12px;
+  font-size: 15px;
 }
 .qs-study-nav a:hover {
   border-color: var(--qs-accent);
@@ -86,11 +86,11 @@
 .qs-learning-guide dd {
   color: #b4c4db;
   line-height: 1.85;
-  font-size: 14px;
+  font-size: 17px;
 }
 .qs-learning-guide h3 {
   color: #f0f4ff;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.5;
   margin-bottom: 12px;
 }
@@ -128,7 +128,7 @@
 }
 .qs-roadmap .qs-checkpoint {
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 16px;
 }
 .qs-checkpoint strong,
 .qs-example-note > strong {
@@ -159,7 +159,7 @@
 }
 .qs-example-note > strong {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 7px;
@@ -199,20 +199,20 @@
   text-decoration: underline;
 }
 .qs-resource-kind {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
   letter-spacing: 1px;
   color: var(--qs-accent);
 }
 .qs-resource-provider {
-  font-size: 12px;
+  font-size: 15px;
   color: #91a7c6;
 }
 .qs-resource .qs-example-note {
   margin-top: 0;
 }
 .qs-resource .qs-resource-context {
-  font-size: 12px;
+  font-size: 15px;
   color: #8fa4c1;
 }
 .qs-resource > .qs-button {
@@ -228,7 +228,7 @@
   width: 100%;
   min-width: 540px;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 17px;
   background: #0d1527;
   text-align: left;
 }
@@ -236,7 +236,7 @@
   text-align: left;
   padding: 18px;
   color: #b4c4db;
-  font-size: 12px;
+  font-size: 15px;
 }
 .qs-model-table th,
 .qs-model-table td {
@@ -251,7 +251,7 @@
   color: #b4c4db;
 }
 .qs-learning-guide .qs-study-source {
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 12px;
 }
 .qs-study-source a {
@@ -271,7 +271,7 @@
 }
 .qs-misconceptions dt {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 17px;
   color: #e1e9f7;
   margin-bottom: 7px;
 }
@@ -286,7 +286,7 @@
 .qs-study-panel summary {
   cursor: pointer;
   color: var(--qs-accent);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
 }
 .qs-study-panel details p {
@@ -307,7 +307,7 @@
 }
 .qs-knowledge-check legend {
   padding: 0;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6;
   font-weight: 700;
 }
@@ -321,7 +321,7 @@
   border-radius: 8px;
   cursor: pointer;
   color: #b4c4db;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.7;
 }
 .qs-knowledge-check label:has(input:checked) {
@@ -349,7 +349,7 @@
 }
 .qs-check-actions p {
   width: 100%;
-  font-size: 12px;
+  font-size: 15px;
 }
 @media (max-width: 760px) {
   .qs-study-intro,
@@ -368,10 +368,10 @@
   }
   .qs-worked-example pre {
     padding: 14px;
-    font-size: 12px;
+    font-size: 15px;
   }
   .qs-study-nav a {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 .qs-root {
@@ -411,7 +411,7 @@
 }
 .qs-eyebrow {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -421,13 +421,13 @@
   margin-bottom: 22px;
 }
 .qs-section-heading h2 {
-  font-size: 21px;
+  font-size: 25px;
   font-weight: 900;
   letter-spacing: -0.6px;
   margin-top: 5px;
 }
 .qs-section-heading p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
   color: #ffffff65;
   margin-top: 7px;
@@ -496,7 +496,7 @@
   top: 14px;
   left: 14px;
   z-index: 2;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
   padding: 4px 10px;
@@ -512,21 +512,21 @@
   flex-direction: column;
 }
 .qs-card-copy h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: -0.5px;
   line-height: 1.2;
 }
 .qs-card-subtitle {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--qs-accent);
   margin-top: 5px;
   letter-spacing: 0.3px;
 }
 .qs-card-copy p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.7;
   color: #ffffff65;
   margin: 10px 0 16px;
@@ -540,7 +540,7 @@
 .qs-feature-chips > span {
   padding: 3px 10px;
   border-radius: 99px;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   background: color-mix(in srgb, var(--qs-accent) 6%, transparent);
   border: 1px solid color-mix(in srgb, var(--qs-accent) 14%, transparent);
@@ -554,7 +554,7 @@
   border: 1px solid transparent;
   border-radius: 13px;
   padding: 13px 20px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 800;
   background: linear-gradient(135deg, var(--qs-accent), var(--qs-dark));
   color: #fff !important;
@@ -848,7 +848,7 @@
 }
 .qs-compact .qs-model-label {
   bottom: 8px;
-  font-size: 6px;
+  font-size: 10px;
 }
 .qs-tool-shell {
   display: flex;
@@ -874,7 +874,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
-  font-size: 11px;
+  font-size: 14px;
   color: #9aa9c5;
   margin-bottom: 22px;
 }
@@ -888,7 +888,7 @@
   margin-bottom: 18px;
 }
 .qs-summary-switcher a {
-  font-size: 10px;
+  font-size: 13px;
   color: #91a2bf;
   padding: 9px 12px;
   border: 1px solid #ffffff12;
@@ -921,14 +921,14 @@
   margin-top: 20px;
 }
 .qs-summary-hero h2 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--qs-accent);
   margin-top: 12px;
 }
 .qs-summary-hero p {
   color: #a1aec4;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.8;
   max-width: 430px;
   margin-top: 15px;
@@ -944,7 +944,7 @@
   scroll-margin-top: 22px;
 }
 .qs-summary-section .qs-section-heading h2 {
-  font-size: 25px;
+  font-size: 30px;
   letter-spacing: -0.7px;
 }
 .qs-summary-section .qs-eyebrow {
@@ -1003,7 +1003,7 @@
   color: var(--qs-accent);
 }
 .qs-part > span:not(.qs-part-status) {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
 }
 .qs-part-status {
@@ -1031,7 +1031,7 @@
   border-color: var(--qs-accent);
 }
 .qs-part-tooltip {
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.7;
   color: #9badc6;
 }
@@ -1098,12 +1098,12 @@
   background: #ffffff04;
 }
 .qs-component-detail h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.4px;
 }
 .qs-component-detail p {
-  font-size: 11px;
+  font-size: 14px;
   color: #9badc6;
   line-height: 1.8;
   margin-top: 13px;
@@ -1126,7 +1126,7 @@
 }
 .qs-root .qs-note {
   color: #8397b3;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.8;
   margin-top: 17px;
 }
@@ -1161,7 +1161,7 @@
   border-radius: 8px;
   background: #111c2e;
   color: #afc0d8;
-  font-size: 10px;
+  font-size: 14px;
   text-align: left;
 }
 .qs-flow-path button span {
@@ -1205,11 +1205,11 @@
   background: #0f192a;
 }
 .qs-flow-description strong {
-  font-size: 17px;
+  font-size: 20px;
   color: var(--qs-accent);
 }
 .qs-flow-description p {
-  font-size: 12px;
+  font-size: 15px;
   color: #9badc6;
   line-height: 1.8;
   margin-top: 8px;
@@ -1257,11 +1257,11 @@
   margin-bottom: 18px;
 }
 .qs-concept h3 {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 800;
 }
 .qs-concept p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.8;
   color: #9badc6;
   margin-top: 9px;
@@ -1339,7 +1339,7 @@
 }
 .qs-processing-step p {
   color: #9badc6;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.8;
   margin-top: 9px;
 }
@@ -1534,7 +1534,7 @@
   border: 1px solid #ffffff12;
   border-radius: 10px;
   background: #ffffff04;
-  font-size: 11px;
+  font-size: 14px;
   color: #b4c2d8;
 }
 .qs-takeaway-grid i {
@@ -1679,7 +1679,7 @@
     margin-top: 36px;
   }
   .qs-summary-section .qs-section-heading h2 {
-    font-size: 22px;
+    font-size: 26px;
   }
   .qs-interactive-pi {
     gap: 12px;
@@ -1696,7 +1696,7 @@
     gap: 5px;
   }
   .qs-part-tooltip {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 @media (max-width: 560px) {
@@ -1744,7 +1744,7 @@
     font-size: 42px;
   }
   .qs-terminal ol {
-    font-size: 10px;
+    font-size: 13px;
   }
   .qs-terminal li span {
     margin-right: 12px;
@@ -1754,11 +1754,11 @@
   }
   .qs-gpio-groups button {
     padding: 13px 4px;
-    font-size: 7px;
+    font-size: 10px;
   }
   .qs-flow-controls .qs-button {
     padding: 11px 12px;
-    font-size: 10px;
+    font-size: 13px;
   }
   .qs-processing-step {
     padding: 16px;

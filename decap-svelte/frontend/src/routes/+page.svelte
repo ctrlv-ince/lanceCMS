@@ -94,7 +94,7 @@
 		margin-top: 0;
 	}
 	h1 {
-		font-size: clamp(23px, 3vw, 27px);
+		font-size: clamp(30px, 3.5vw, 36px);
 		line-height: 1.3;
 		font-weight: 600;
 	}

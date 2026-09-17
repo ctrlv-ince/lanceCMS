@@ -58,10 +58,10 @@ function LectureModal({
           style={{ background: lecture.accent }}
         >
           <div className="flex items-center gap-3">
-            <span className="rounded-xl bg-white/20 px-3 py-1.5 text-xs font-black uppercase tracking-widest text-white">
+            <span className="rounded-xl bg-white/20 px-3 py-1.5 text-sm font-black uppercase tracking-widest text-white">
               {lecture.code}
             </span>
-            <span className="text-base font-bold text-white">
+            <span className="text-lg font-bold text-white">
               {lecture.title}
             </span>
           </div>
@@ -91,10 +91,10 @@ function LectureModal({
               >
                 📊
               </div>
-              <h3 className="text-xl font-extrabold tracking-tight text-gray-900">
+              <h3 className="text-2xl font-extrabold tracking-tight text-gray-900">
                 Presentation coming soon
               </h3>
-              <p className="mt-2 max-w-sm text-sm leading-6 text-gray-500">
+              <p className="mt-2 max-w-sm text-base leading-7 text-gray-500">
                 The PPTX file for{" "}
                 <span className="font-bold" style={{ color: lecture.accent }}>
                   {lecture.code}
@@ -103,7 +103,7 @@ function LectureModal({
                 it will appear here automatically.
               </p>
               <div
-                className="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-base font-bold"
                 style={{ backgroundColor: lecture.accentSoft, color: lecture.accent }}
               >
                 🗄️ Upload via Sanity Studio →
@@ -138,7 +138,7 @@ function LectureCard({
         <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition duration-300 group-hover:bg-black/40">
           <button
             onClick={onOpen}
-            className="scale-0 rounded-2xl px-5 py-3 text-sm font-black text-white opacity-0 shadow-xl transition duration-300 group-hover:scale-100 group-hover:opacity-100"
+            className="scale-0 rounded-2xl px-5 py-3 text-base font-black text-white opacity-0 shadow-xl transition duration-300 group-hover:scale-100 group-hover:opacity-100"
             style={{ backgroundColor: lecture.accent }}
           >
             ▶ View Presentation
@@ -146,7 +146,7 @@ function LectureCard({
         </div>
         {/* Tag badge */}
         <span
-          className="absolute left-4 top-4 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-widest"
+          className="absolute left-4 top-4 rounded-full px-3 py-1 text-[13px] font-black uppercase tracking-widest"
           style={{ backgroundColor: lecture.accentSoft, color: lecture.accent }}
         >
           {lecture.tag}
@@ -158,26 +158,26 @@ function LectureCard({
         {/* Code badge */}
         <div className="mb-3 flex items-center gap-2">
           <span
-            className="rounded-lg px-2.5 py-1 text-xs font-black tracking-widest"
+            className="rounded-lg px-2.5 py-1 text-sm font-black tracking-widest"
             style={{ backgroundColor: lecture.accentSoft, color: lecture.accent }}
           >
             {lecture.code}
           </span>
           {lecture.pptUrl ? (
-            <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold text-emerald-600">
+            <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[13px] font-bold text-emerald-600">
               ● Available
             </span>
           ) : (
-            <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold text-amber-600">
+            <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[13px] font-bold text-amber-600">
               ○ Coming Soon
             </span>
           )}
         </div>
 
-        <h3 className="text-lg font-extrabold tracking-tight text-gray-900">
+        <h3 className="text-xl font-extrabold tracking-tight text-gray-900">
           {lecture.title}
         </h3>
-        <p className="mt-2 flex-1 text-sm leading-6 text-gray-500">
+        <p className="mt-2 flex-1 text-base leading-7 text-gray-500">
           {lecture.description}
         </p>
 
@@ -187,7 +187,7 @@ function LectureCard({
         {/* CTA */}
         <button
           onClick={onOpen}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-white transition hover:brightness-95"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-base font-bold text-white transition hover:brightness-95"
           style={{ backgroundColor: lecture.accent }}
         >
           Open Lecture <span>→</span>
