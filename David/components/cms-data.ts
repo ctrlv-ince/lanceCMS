@@ -24,7 +24,7 @@ export const projects: CmsProject[] = [
     accentSoft: "#F0EDFF",
     mark: "D",
     lectureTopics: ["Microprocessor History", "SAP 1", "SAP 2"],
-    studioUrl: "http://localhost:8055",
+    studioUrl: "http://localhost",
   },
   {
     name: "Sanity",
