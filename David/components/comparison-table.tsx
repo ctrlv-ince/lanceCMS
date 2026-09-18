@@ -5,7 +5,7 @@ export function ComparisonTable() {
     <div className="overflow-hidden rounded-[22px] border border-line bg-white shadow-card">
       <div className="overflow-x-auto">
         <table className="w-full min-w-[620px] border-collapse text-left">
-          <thead className="bg-mist text-sm uppercase tracking-[0.12em] text-slate">
+          <thead className="bg-mist text-base uppercase tracking-[0.12em] text-slate">
             <tr>
               <th className="px-6 py-4 font-bold">CMS</th>
               <th className="px-6 py-4 font-bold">Frontend</th>

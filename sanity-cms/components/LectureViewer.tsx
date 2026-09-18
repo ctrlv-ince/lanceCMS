@@ -1,4 +1,4 @@
-﻿import React, {useState, useEffect, CSSProperties} from 'react'
+import React, {useState, useEffect, CSSProperties} from 'react'
 
 /* â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 interface Lecture {
@@ -196,13 +196,13 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
               boxShadow: `0 0 20px ${lecture.glow}`,
             }}
           >
-            ðŸ“Š
+            📊
           </div>
           <div style={{flex: 1}}>
-            <div style={{fontSize: 11, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: lecture.accent, marginBottom: 2}}>
-              {lecture.code} Â· Microcontroller LEC
+            <div style={{fontSize: 14, fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', color: lecture.accent, marginBottom: 4}}>
+              {lecture.code} · Microcontroller LEC
             </div>
-            <div style={{fontSize: 16, fontWeight: 800, color: '#f0f2ff', letterSpacing: -0.3}}>
+            <div style={{fontSize: 20, fontWeight: 800, color: '#f0f2ff', letterSpacing: -0.3}}>
               {lecture.title}
             </div>
           </div>
@@ -224,7 +224,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
               transition: 'background 0.2s',
             }}
           >
-            âœ•
+            ✕
           </button>
         </div>
 
@@ -276,15 +276,15 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
                   ['--g' as string]: lecture.glow,
                 }}
               >
-                ðŸ“‚
+                📂
               </div>
               <div>
-                <div style={{fontSize: 18, fontWeight: 800, color: '#f0f2ff', marginBottom: 8}}>
+                <div style={{fontSize: 22, fontWeight: 800, color: '#f0f2ff', marginBottom: 8}}>
                   No presentation uploaded yet
                 </div>
-                <div style={{fontSize: 13, color: '#8b92b0', lineHeight: 1.6, maxWidth: 340}}>
+                <div style={{fontSize: 16, color: '#9da7c5', lineHeight: 1.7, maxWidth: 380}}>
                   Upload the <strong style={{color: lecture.accent}}>{lecture.code}.pptx</strong> file
-                  via Sanity CMS â€” it will appear here automatically once added.
+                  via Sanity CMS — it will appear here automatically once added.
                 </div>
               </div>
 
@@ -298,14 +298,14 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
                   borderRadius: 12,
                   background: `${lecture.accent}18`,
                   border: `1px solid ${lecture.accent}33`,
-                  fontSize: 12,
+                  fontSize: 15,
                   fontWeight: 600,
                   color: lecture.accent,
                   letterSpacing: 0.3,
                 }}
               >
-                <span>ðŸ—„ï¸</span>
-                Go to Structure â†’ Lectures â†’ Upload {lecture.code}
+                <span>🗄️</span>
+                Go to Structure → Lectures → Upload {lecture.code}
               </div>
             </div>
           )}
@@ -315,7 +315,7 @@ function Modal({lecture, onClose}: {lecture: Lecture; onClose: () => void}) {
   )
 }
 
-/* â”€â”€â”€ Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─── Card ───────────────────────────────────────────────────────────────── */
 function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number; onOpen: () => void}) {
   const [hovered, setHovered] = useState(false)
 
@@ -401,7 +401,7 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
               border: 'none',
               background: `linear-gradient(135deg, ${lecture.accent}, ${lecture.accentDark})`,
               color: '#fff',
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 800,
               cursor: 'pointer',
               boxShadow: `0 8px 32px ${lecture.glow}`,
@@ -413,7 +413,7 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
               letterSpacing: 0.3,
             }}
           >
-            â–¶ View Slides
+            ▶ View Slides
           </button>
         </div>
 
@@ -423,9 +423,9 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
             position: 'absolute',
             top: 12,
             left: 12,
-            padding: '5px 12px',
+            padding: '6px 14px',
             borderRadius: 99,
-            fontSize: 10,
+            fontSize: 13,
             fontWeight: 800,
             letterSpacing: 1.2,
             textTransform: 'uppercase',
@@ -444,9 +444,9 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
             position: 'absolute',
             top: 12,
             right: 12,
-            padding: '5px 10px',
+            padding: '6px 12px',
             borderRadius: 99,
-            fontSize: 10,
+            fontSize: 13,
             fontWeight: 700,
             background: lecture.pptUrl ? 'rgba(34,211,165,0.2)' : 'rgba(245,158,11,0.2)',
             color: lecture.pptUrl ? '#22d3a5' : '#f59e0b',
@@ -457,7 +457,7 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
             gap: 5,
           }}
         >
-          <span style={{fontSize: 7, animation: lecture.pptUrl ? 'none' : 'lv-pulse 2s infinite'}}>â—</span>
+          <span style={{fontSize: 11, animation: lecture.pptUrl ? 'none' : 'lv-pulse 2s infinite'}}>● </span>
           {lecture.pptUrl ? 'Available' : 'Coming Soon'}
         </div>
       </div>
@@ -468,9 +468,9 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
         <div style={{display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10}}>
           <span
             style={{
-              padding: '4px 10px',
+              padding: '5px 12px',
               borderRadius: 8,
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 900,
               letterSpacing: 1.5,
               textTransform: 'uppercase',
@@ -483,13 +483,13 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
           </span>
         </div>
 
-        <div style={{fontSize: 18, fontWeight: 800, color: '#f0f2ff', letterSpacing: -0.4, lineHeight: 1.3, marginBottom: 6}}>
+        <div style={{fontSize: 22, fontWeight: 800, color: '#f0f2ff', letterSpacing: -0.4, lineHeight: 1.3, marginBottom: 6}}>
           {lecture.title}
         </div>
-        <div style={{fontSize: 12, fontWeight: 600, color: lecture.accent, marginBottom: 10, letterSpacing: 0.3}}>
+        <div style={{fontSize: 15, fontWeight: 600, color: lecture.accent, marginBottom: 10, letterSpacing: 0.3}}>
           {lecture.subtitle}
         </div>
-        <p style={{fontSize: 13, color: '#8b92b0', lineHeight: 1.65, flex: 1, marginBottom: 18}}>
+        <p style={{fontSize: 16, color: '#9da7c5', lineHeight: 1.7, flex: 1, marginBottom: 18}}>
           {lecture.description}
         </p>
 
@@ -500,12 +500,12 @@ function LectureCard({lecture, index, onOpen}: {lecture: Lecture; index: number;
               key={t}
               className="lv-topic-chip"
               style={{
-                padding: '4px 10px',
+                padding: '5px 12px',
                 borderRadius: 99,
-                fontSize: 10,
+                fontSize: 13,
                 fontWeight: 700,
                 background: 'rgba(255,255,255,0.05)',
-                color: '#8b92b0',
+                color: '#9da7c5',
                 border: '1px solid rgba(255,255,255,0.07)',
               }}
             >
@@ -575,8 +575,8 @@ export function LectureViewerTool() {
           {/* Eyebrow */}
           <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:16}}>
             <div style={{height:1,width:32,background:'rgba(255,255,255,0.15)'}} />
-            <span style={{fontSize:11,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.35)'}}>
-              Sanity CMS Â· Microcontroller LEC
+            <span style={{fontSize:14,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.45)'}}>
+              Sanity CMS · Microcontroller LEC
             </span>
             <div style={{height:1,flex:1,background:'rgba(255,255,255,0.06)'}} />
           </div>
@@ -586,7 +586,7 @@ export function LectureViewerTool() {
               <h1 style={{fontSize:38,fontWeight:900,letterSpacing:-1,lineHeight:1.1,margin:0,background:'linear-gradient(135deg,#f0f2ff 0%,#a0a8cc 100%)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>
                 Lecture Presentations
               </h1>
-              <p style={{fontSize:15,color:'#8b92b0',marginTop:10,lineHeight:1.6,maxWidth:480}}>
+              <p style={{fontSize:18,color:'#9da7c5',marginTop:10,lineHeight:1.7,maxWidth:520}}>
                 Microcontroller LEC reports assigned to the{' '}
                 <span style={{color:'#F05A31',fontWeight:700}}>Sanity CMS</span> project.
                 Click a card to view the full presentation.
@@ -601,8 +601,8 @@ export function LectureViewerTool() {
                 {label:'Pending', value:'2', color:'#f59e0b'},
               ].map((s) => (
                 <div key={s.label} style={{textAlign:'center',padding:'12px 18px',borderRadius:14,background:'rgba(255,255,255,0.04)',border:'1px solid rgba(255,255,255,0.07)'}}>
-                  <div style={{fontSize:20,fontWeight:900,color:s.color,lineHeight:1}}>{s.value}</div>
-                  <div style={{fontSize:10,fontWeight:600,color:'#4a5070',letterSpacing:0.8,marginTop:4,textTransform:'uppercase'}}>{s.label}</div>
+                  <div style={{fontSize:22,fontWeight:900,color:s.color,lineHeight:1}}>{s.value}</div>
+                  <div style={{fontSize:13,fontWeight:600,color:'#7a84aa',letterSpacing:0.8,marginTop:4,textTransform:'uppercase'}}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -614,11 +614,11 @@ export function LectureViewerTool() {
         <div style={{marginBottom:36,animation:'lv-slideUp 0.5s 0.1s ease both'}}>
           <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:14}}>
             <div style={{height:1,width:18,background:'rgba(255,255,255,0.1)'}}/>
-            <span style={{fontSize:9,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.22)'}}>📷 Reference Diagrams</span>
+            <span style={{fontSize:13,fontWeight:700,letterSpacing:2,textTransform:'uppercase',color:'rgba(255,255,255,0.35)'}}>📷 Reference Diagrams</span>
             <div style={{height:1,flex:1,background:'rgba(255,255,255,0.05)'}}/>
           </div>
           <div style={{marginBottom:8}}>
-            <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(0,229,204,0.5)',marginBottom:5}}>SAP-3 — Computer Architecture</div>
+            <div style={{fontSize:13,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(0,229,204,0.7)',marginBottom:6}}>SAP-3 — Computer Architecture</div>
             <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
               {[{src:'/static/img_sap3_alu.jpg',alt:'ALU'},{src:'/static/img_sap3_bus.jpg',alt:'Bus'},{src:'/static/img_sap3_cu.jpg',alt:'Control Unit'}].map(d => (
                 <div key={d.src} style={{height:84,border:'1px solid rgba(0,229,204,0.15)',borderRadius:10,overflow:'hidden'}}><img src={d.src} alt={d.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
@@ -635,7 +635,7 @@ export function LectureViewerTool() {
           </div>
           <div style={{height:1,background:'linear-gradient(90deg,transparent,rgba(255,255,255,0.06),transparent)',margin:'10px 0'}}/>
           <div>
-            <div style={{fontSize:8,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(255,76,110,0.5)',marginBottom:5}}>RASPI-1 — Embedded Systems</div>
+            <div style={{fontSize:13,fontWeight:700,letterSpacing:1.5,textTransform:'uppercase',color:'rgba(255,76,110,0.7)',marginBottom:6}}>RASPI-1 — Embedded Systems</div>
             <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:5,marginBottom:5}}>
               {[{src:'/static/thumb_raspi1.jpg',alt:'Raspberry Pi'},{src:'/static/img_raspi_gpio.jpg',alt:'GPIO'},{src:'/static/img_raspi_bb.jpg',alt:'Breadboard'}].map(d => (
                 <div key={d.src} style={{height:84,border:'1px solid rgba(255,76,110,0.15)',borderRadius:10,overflow:'hidden'}}><img src={d.src} alt={d.alt} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/></div>
@@ -660,8 +660,8 @@ export function LectureViewerTool() {
 
         {/* Footer note */}
         <div style={{marginTop:40,textAlign:'center',animation:'lv-slideUp 0.6s 0.4s ease both'}}>
-          <p style={{fontSize:12,color:'rgba(255,255,255,0.2)',letterSpacing:0.5}}>
-            ðŸ’¡ Upload PPTX files via <strong style={{color:'rgba(255,255,255,0.35)'}}>Structure â†’ Lectures</strong> in Sanity to activate the viewer
+          <p style={{fontSize:15,color:'rgba(255,255,255,0.4)',letterSpacing:0.5}}>
+            💡 Upload PPTX files via <strong style={{color:'rgba(255,255,255,0.6)'}}>Structure → Lectures</strong> in Sanity to activate the viewer
           </p>
         </div>
       </div>

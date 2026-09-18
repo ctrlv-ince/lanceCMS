@@ -87,7 +87,7 @@
 		align-items: center;
 		gap: 20px;
 		margin-top: 16px;
-		font-size: 14px;
+		font-size: 16px;
 		color: var(--color-text-muted);
 	}
 	.viewer-help > span {

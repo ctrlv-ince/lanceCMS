@@ -46,6 +46,7 @@ services:
       CORS_ENABLED: "true"
       CORS_ORIGIN: "http://localhost,http://localhost:80"
       WEBSOCKETS_ENABLED: "true"
+      CUSTOM_CSS: "html, body, :root { font-size: 16px !important; } .v-application, .v-text-overflow, .render-template, .v-list-item, .v-table, input, textarea, select { font-size: 15px !important; }"
     ports:
       - "8055:8055"
     healthcheck:

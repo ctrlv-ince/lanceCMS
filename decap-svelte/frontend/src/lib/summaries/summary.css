@@ -40,8 +40,9 @@
 	top: 22px;
 	color: var(--ds-accent);
 	font:
-		9px ui-monospace,
+		13px ui-monospace,
 		monospace;
+	font-weight: 700;
 	letter-spacing: 0.13em;
 	z-index: 2;
 }
@@ -57,13 +58,14 @@
 	letter-spacing: -0.03em;
 }
 .ds-card-subtitle {
-	font-size: 11px;
+	font-size: 14px;
+	font-weight: 600;
 	color: var(--ds-accent);
 	margin-top: 6px;
 }
 .ds-card-copy p {
-	font-size: 13px;
-	line-height: 1.9;
+	font-size: 16px;
+	line-height: 1.8;
 	color: #94a3bd;
 	margin: 16px 0 20px;
 }
@@ -73,8 +75,9 @@
 	gap: 7px;
 }
 .ds-chips > span {
-	padding: 5px 10px;
-	font-size: 9px;
+	padding: 6px 12px;
+	font-size: 13px;
+	font-weight: 600;
 	border-radius: 7px;
 	color: var(--ds-accent);
 	border: 1px solid color-mix(in srgb, var(--ds-accent) 20%, transparent);
@@ -84,7 +87,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 12px;
+	font-size: 15px;
+	font-weight: 600;
 	margin-top: auto;
 	padding-top: 22px;
 	border-top: 1px solid #ffffff12;
@@ -159,7 +163,7 @@
 	top: 12px;
 	left: 18px;
 	font:
-		7px ui-monospace,
+		11px ui-monospace,
 		monospace;
 	letter-spacing: 0.12em;
 	color: #94aaca;
@@ -199,13 +203,13 @@
 }
 .ds-model-part strong {
 	font:
-		11px ui-monospace,
+		13px ui-monospace,
 		monospace;
 	font-weight: 700;
 	letter-spacing: 0.05em;
 }
 .ds-model-part > span {
-	font-size: 8px;
+	font-size: 11px;
 	line-height: 1.5;
 	color: #9ab0ce;
 }
@@ -352,9 +356,9 @@ button.ds-model-part.ds-selected,
 	left: 50%;
 	transform: translateX(-50%) translateZ(30px);
 	padding: 10px;
-	width: 190px;
+	width: 210px;
 	color: #dce7fa;
-	font-size: 10px;
+	font-size: 13px;
 	line-height: 1.7;
 	background: #050b1df5;
 	border: 1px solid #334155;
@@ -411,14 +415,14 @@ button.ds-model-part.ds-selected,
 	letter-spacing: -0.035em;
 }
 .ds-component-detail p {
-	font-size: 13px;
-	line-height: 1.9;
+	font-size: 16px;
+	line-height: 1.8;
 	color: #a6b9d3;
 }
 .ds-component-detail small {
 	display: block;
 	margin-top: 20px;
-	font-size: 10px;
+	font-size: 13px;
 	line-height: 1.8;
 	color: #788dac;
 }
@@ -431,7 +435,8 @@ button.ds-model-part.ds-selected,
 	justify-content: space-between;
 	gap: 14px;
 	flex-wrap: wrap;
-	font-size: 11px;
+	font-size: 15px;
+	font-weight: 600;
 	color: #a8b7d1;
 	margin-bottom: 24px;
 }
@@ -442,7 +447,8 @@ button.ds-model-part.ds-selected,
 	display: flex;
 	gap: 10px;
 	margin-bottom: 24px;
-	font-size: 11px;
+	font-size: 15px;
+	font-weight: 600;
 }
 .ds-topic-switcher a {
 	border: 1px solid #25334d;
@@ -470,9 +476,10 @@ button.ds-model-part.ds-selected,
 	display: block;
 	color: var(--ds-accent);
 	font:
-		9px/1.8 ui-monospace,
+		13px/1.8 ui-monospace,
 		Consolas,
 		monospace;
+	font-weight: 700;
 	letter-spacing: 0.12em;
 }
 .ds-hero-copy h1 {
@@ -489,9 +496,9 @@ button.ds-model-part.ds-selected,
 	color: #c6d5ef;
 }
 .ds-hero-copy p {
-	font-size: 13px;
+	font-size: 17px;
 	color: #94a7c4;
-	line-height: 1.9;
+	line-height: 1.8;
 	margin: 18px 0 24px;
 }
 .ds-hero-copy .ds-chips {
@@ -507,13 +514,13 @@ button.ds-model-part.ds-selected,
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 12px 16px;
+	padding: 12px 18px;
 	border: 1px solid var(--ds-accent);
 	border-radius: 9px;
 	background: var(--ds-accent);
 	color: #071222;
 	font:
-		600 11px/1.6 Inter,
+		700 15px/1.6 Inter,
 		sans-serif;
 	cursor: pointer;
 	transition:
@@ -547,8 +554,8 @@ button.ds-model-part.ds-selected,
 	margin: 10px 0;
 }
 .ds-heading p {
-	font-size: 13px;
-	line-height: 1.9;
+	font-size: 17px;
+	line-height: 1.8;
 	color: #91a6c3;
 	max-width: 760px;
 }
@@ -577,8 +584,8 @@ button.ds-model-part.ds-selected,
 }
 .ds-concept p {
 	color: #94a7c4;
-	font-size: 12px;
-	line-height: 1.9;
+	font-size: 15px;
+	line-height: 1.8;
 }
 .ds-hardware-map {
 	padding: 30px;
@@ -597,7 +604,7 @@ button.ds-model-part.ds-selected,
 	border-radius: 12px;
 	color: var(--ds-accent);
 	font:
-		12px ui-monospace,
+		14px ui-monospace,
 		monospace;
 }
 .ds-map-trunk {
@@ -656,11 +663,11 @@ button.ds-model-part.ds-selected,
 }
 .ds-hardware-branches strong {
 	font:
-		12px ui-monospace,
+		14px ui-monospace,
 		monospace;
 }
 .ds-hardware-branches span {
-	font-size: 11px;
+	font-size: 14px;
 	color: #91a6c3;
 }
 .ds-gpio-lab,
@@ -686,7 +693,7 @@ button.ds-model-part.ds-selected,
 	background: #101b30;
 	color: #9caec9;
 	cursor: pointer;
-	font-size: 10px;
+	font-size: 13px;
 }
 .ds-gpio-groups button.ds-selected {
 	border-color: var(--ds-accent);
@@ -712,13 +719,13 @@ button.ds-model-part.ds-selected,
 	margin-bottom: 10px;
 }
 .ds-gpio-detail p {
-	font-size: 13px;
+	font-size: 16px;
 	color: #9caec9;
 }
 .ds-note {
 	color: #7890b2;
-	font-size: 11px;
-	line-height: 1.9;
+	font-size: 14px;
+	line-height: 1.8;
 	margin-top: 18px;
 }
 .ds-output-indicator {
@@ -726,7 +733,7 @@ button.ds-model-part.ds-selected,
 	align-items: center;
 	gap: 10px;
 	font:
-		10px ui-monospace,
+		13px ui-monospace,
 		monospace;
 	color: #91a6c3;
 }
@@ -763,7 +770,7 @@ button.ds-model-part.ds-selected,
 	margin: 10px 0;
 }
 .ds-process-step p {
-	font-size: 12px;
+	font-size: 15px;
 	color: #91a6c3;
 	line-height: 1.8;
 }
@@ -781,7 +788,7 @@ button.ds-model-part.ds-selected,
 	gap: 12px;
 	flex-wrap: wrap;
 	font:
-		9px ui-monospace,
+		13px ui-monospace,
 		monospace;
 	color: var(--ds-accent);
 	padding-bottom: 20px;
@@ -798,8 +805,8 @@ button.ds-model-part.ds-selected,
 }
 .ds-message-grid p {
 	color: #91a6c3;
-	font-size: 13px;
-	line-height: 1.9;
+	font-size: 16px;
+	line-height: 1.8;
 	margin-top: 10px;
 }
 .ds-message-grid pre {
@@ -809,7 +816,7 @@ button.ds-model-part.ds-selected,
 	border: 1px solid #25334d;
 	border-radius: 12px;
 	font:
-		12px/1.9 ui-monospace,
+		15px/1.8 ui-monospace,
 		monospace;
 	white-space: pre-wrap;
 	overflow-wrap: anywhere;
@@ -817,7 +824,7 @@ button.ds-model-part.ds-selected,
 .ds-result {
 	display: inline-block;
 	font:
-		11px ui-monospace,
+		14px ui-monospace,
 		monospace;
 	padding: 8px 12px;
 	border: 1px solid #56d5d0;
@@ -833,7 +840,7 @@ button.ds-model-part.ds-selected,
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
-	font-size: 13px;
+	font-size: 16px;
 	color: #94a7c4;
 }
 .ds-temperature-lab label strong {
@@ -857,7 +864,7 @@ button.ds-model-part.ds-selected,
 	padding: 13px 18px;
 	text-align: center;
 	font:
-		10px ui-monospace,
+		13px ui-monospace,
 		monospace;
 	background: #101b30;
 	width: 240px;
@@ -893,7 +900,7 @@ button.ds-model-part.ds-selected,
 .ds-decision-branches span {
 	display: block;
 	font:
-		9px ui-monospace,
+		13px ui-monospace,
 		monospace;
 	margin-bottom: 14px;
 	color: var(--ds-accent);
@@ -903,7 +910,7 @@ button.ds-model-part.ds-selected,
 }
 .ds-decision-branches p {
 	color: #91a6c3;
-	font-size: 12px;
+	font-size: 15px;
 	margin-top: 12px;
 }
 .ds-connected-path {
@@ -918,7 +925,7 @@ button.ds-model-part.ds-selected,
 	text-align: center;
 	padding: 20px 8px;
 	font:
-		10px/1.8 ui-monospace,
+		13px/1.8 ui-monospace,
 		monospace;
 	color: var(--ds-accent);
 	background: #101b30;
@@ -928,7 +935,7 @@ button.ds-model-part.ds-selected,
 .ds-inline-link {
 	display: inline-flex;
 	margin-top: 20px;
-	font-size: 12px;
+	font-size: 15px;
 	color: var(--ds-accent);
 }
 .ds-summary-facts {
@@ -943,15 +950,16 @@ button.ds-model-part.ds-selected,
 }
 .ds-summary-facts span {
 	display: block;
-	font-size: 10px;
+	font-size: 13px;
+	font-weight: 600;
 	color: #91a6c3;
 	margin-bottom: 14px;
 }
 .ds-summary-facts strong {
-	font-size: 17px;
+	font-size: 20px;
 	color: var(--ds-accent);
 	line-height: 1.6;
-	font-weight: 500;
+	font-weight: 600;
 }
 .ds-footnote {
 	margin-top: 34px;
@@ -1065,7 +1073,7 @@ button.ds-model-part.ds-selected,
 		padding: 40px 8px 24px;
 	}
 	.ds-flow-board .ds-model-part strong {
-		font-size: 8px;
+		font-size: 11px;
 	}
 	.ds-model-wire {
 		width: 10px;
@@ -1080,14 +1088,14 @@ button.ds-model-part.ds-selected,
 		gap: 10px;
 	}
 	.ds-hardware-branches span {
-		font-size: 9px;
+		font-size: 12px;
 		text-align: center;
 	}
 	.ds-gpio-groups {
 		gap: 6px;
 	}
 	.ds-gpio-groups button {
-		font-size: 8px;
+		font-size: 11px;
 		padding: 18px 4px;
 	}
 	.ds-process-steps,
@@ -1122,7 +1130,7 @@ button.ds-model-part.ds-selected,
 		padding: 18px;
 	}
 	.ds-summary-facts strong {
-		font-size: 14px;
+		font-size: 17px;
 	}
 }
 @media (prefers-reduced-motion: reduce) {
