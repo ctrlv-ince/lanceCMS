@@ -1,8 +1,8 @@
 <section class="mt-16" aria-labelledby="topic-overviews-title">
-  <p class="eyebrow">QUICK LEARN</p>
-  <h2 id="topic-overviews-title" class="mt-3 text-3xl font-semibold tracking-tight">Topic Overviews</h2>
-  <p class="mt-3 text-base leading-7 text-muted">Get a quick and visual summary of each topic. Explore key concepts, diagrams, and interactive visuals.</p>
-  <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+  <p class="eyebrow text-base">QUICK LEARN</p>
+  <h2 id="topic-overviews-title" class="mt-3 text-4xl font-bold tracking-tight">Topic Overviews</h2>
+  <p class="mt-3 text-lg leading-8 text-muted">Get a quick and visual summary of each topic. Explore key concepts, diagrams, and interactive visuals.</p>
+  <div class="mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
     @for (card of cards; track card.slug; let i = $index) {
       <div appReveal class="topic-learning-entry flex min-w-0 flex-col" [style.--accent]="card.theme === 'history' ? '#ffb469' : card.theme === 'sap2' ? '#b9a1ff' : '#38d9f5'">
       <a appTilt [routerLink]="['/summary', card.slug]" [attr.data-theme]="card.theme" class="library-topic-card group flex min-w-0 flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-panel shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1">
@@ -12,20 +12,20 @@
             @for (module of card.modules; track module; let index = $index) {<span class="board-module" [class.module-left-top]="index === 0" [class.module-right-top]="index === 1" [class.module-left-bottom]="index === 2" [class.module-right-bottom]="index === 3">{{ module }}<i></i></span>}
           </div>
           <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-panel via-transparent to-transparent"></div>
-          <span class="absolute left-5 top-5 font-mono text-[12px] tracking-[.16em] text-ink/65">QUICK LEARN / 0{{ i + 1 }}</span>
+          <span class="absolute left-5 top-5 font-mono text-sm font-semibold tracking-[.16em] text-ink/75">QUICK LEARN / 0{{ i + 1 }}</span>
         </div>
-        <div class="flex flex-1 flex-col p-6">
-          <span class="text-[13px] font-semibold uppercase tracking-widest text-lavender">Topic Summary</span>
-          <h3 class="mt-4 text-xl font-semibold leading-snug tracking-tight">{{ card.title }}</h3>
-          <p class="mt-3 text-base leading-7 text-muted">{{ card.description }}</p>
-          <div class="mt-5 flex flex-wrap gap-1.5">@for (feature of card.features; track feature) {<span class="feature-chip rounded-md border border-line bg-surface px-2.5 py-1 text-xs">{{ feature }}</span>}</div>
-          <p class="learning-card-label mt-5 text-[12px] font-semibold tracking-widest">WHAT YOU WILL LEARN</p>
-          <ul class="mt-3 list-disc space-y-2 pl-4 text-sm leading-6 text-muted">@for (objective of card.learning.objectives.slice(0, 3); track objective) {<li>{{ objective }}</li>}</ul>
-          <p class="mt-4 text-xs leading-5 text-muted">5-step study plan · Worked examples · Knowledge check</p>
-          <div class="flex-1"></div><div class="mt-6 flex items-center justify-between border-t border-line pt-5 text-sm font-medium"><span>View Summary & Learning Guide</span><app-icon class="summary-arrow transition-transform duration-200 group-hover:translate-x-1" name="arrow" /></div>
+        <div class="flex flex-1 flex-col p-7">
+          <span class="text-sm font-bold uppercase tracking-widest text-lavender">Topic Summary</span>
+          <h3 class="mt-4 text-2xl font-bold leading-snug tracking-tight text-white">{{ card.title }}</h3>
+          <p class="mt-3 text-lg leading-relaxed text-slate-200">{{ card.description }}</p>
+          <div class="mt-5 flex flex-wrap gap-2">@for (feature of card.features; track feature) {<span class="feature-chip rounded-md border border-line bg-surface px-3 py-1.5 text-sm font-medium">{{ feature }}</span>}</div>
+          <p class="learning-card-label mt-6 text-sm font-bold tracking-widest text-accent">WHAT YOU WILL LEARN</p>
+          <ul class="mt-3 list-disc space-y-2.5 pl-5 text-base leading-7 text-slate-200">@for (objective of card.learning.objectives.slice(0, 3); track objective) {<li>{{ objective }}</li>}</ul>
+          <p class="mt-4 text-sm leading-6 text-slate-300">5-step study plan · Worked examples · Knowledge check</p>
+          <div class="flex-1"></div><div class="mt-6 flex items-center justify-between border-t border-line pt-5 text-base font-semibold"><span>View Summary & Learning Guide</span><app-icon class="summary-arrow transition-transform duration-200 group-hover:translate-x-1" name="arrow" /></div>
         </div>
       </a>
-      <div class="learning-card-video mt-3 rounded-xl border border-line bg-panel p-5"><span class="learning-card-label text-xs font-semibold tracking-widest">▶ START WITH A VIDEO</span><a class="mt-3 block text-base font-medium leading-6 hover:underline" [href]="card.learning.resources[0].url" target="_blank" rel="noopener noreferrer">{{ card.learning.resources[0].title }} ↗</a><p class="mt-2 text-xs leading-5 text-muted">{{ card.learning.resources[0].provider }} · More resources inside</p></div>
+      <div class="learning-card-video mt-4 rounded-xl border border-line bg-panel p-6"><span class="learning-card-label text-sm font-bold tracking-widest text-accent">▶ START WITH A VIDEO</span><a class="mt-3 block text-lg font-bold leading-7 text-white hover:underline" [href]="card.learning.resources[0].url" target="_blank" rel="noopener noreferrer">{{ card.learning.resources[0].title }} ↗</a><p class="mt-2 text-sm leading-6 text-slate-300">{{ card.learning.resources[0].provider }} · More resources inside</p></div>
       </div>
     }
   </div>

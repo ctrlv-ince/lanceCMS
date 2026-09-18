@@ -1,94 +1,204 @@
 <nav class="summary-return-links" aria-label="Return navigation">
-  <a routerLink="/" class="back-link">← Back to Topics</a>
-  @if (available()) {@if (topic(); as t) {<a [routerLink]="['/courses', t.slug]" class="back-link">Back to Full Lesson →</a>}}
+  <a routerLink="/" class="back-link text-base font-medium">← Back to Topics</a>
+  @if (available()) {@if (topic(); as t) {<a [routerLink]="['/courses', t.slug]" class="back-link text-base font-medium">Back to Full Lesson →</a>}}
 </nav>
 @if (loading()) {
-  <div class="notice" role="status"><span class="connection-dot"></span>Opening visual summary…</div>
+  <div class="notice text-xl" role="status"><span class="connection-dot"></span>Opening visual summary…</div>
 } @else if (!available()) {
-  <div class="notice" role="alert"><h1>Topic unavailable</h1><p>{{ error() || 'The published lesson could not be found.' }}</p>
-    @if (topic()) {<button class="primary-button" (click)="retry()">Try again</button>}
-    <a routerLink="/" class="secondary-button">Back to library</a>
+  <div class="notice text-xl" role="alert"><h1 class="text-3xl font-bold">Topic unavailable</h1><p class="text-xl text-slate-300 mt-2">{{ error() || 'The published lesson could not be found.' }}</p>
+    @if (topic()) {<button class="primary-button text-lg mt-4" (click)="retry()">Try again</button>}
+    <a routerLink="/" class="secondary-button text-lg mt-4">Back to library</a>
   </div>
 } @else if (topic(); as t) {
   <div class="topic-exhibit" [attr.data-theme]="t.theme">
     <nav class="topic-switcher" aria-label="Visual summaries">
-      <span class="section-kicker">THE INTERACTIVE COLLECTION</span>
+      <span class="section-kicker text-base font-bold tracking-wider">THE INTERACTIVE COLLECTION</span>
       <div>@for (other of topics; track other.slug) {<a [routerLink]="['/topics', other.slug, 'summary']" [class.active]="t.slug === other.slug" [attr.aria-current]="t.slug === other.slug ? 'page' : null">{{ other.label }}</a>}</div>
     </nav>
     <header class="exhibit-hero">
-      <div class="hero-copy"><div class="section-kicker"><span class="live-indicator"></span> EXHIBIT {{ t.index }} / VISUAL SUMMARY</div>
+      <div class="hero-copy"><div class="section-kicker text-base font-bold tracking-wider"><span class="live-indicator"></span> EXHIBIT {{ t.index }} / VISUAL SUMMARY</div>
         <h1 [class.history-title]="t.theme === 'history'">{{ t.title }}</h1>
-        <h2>{{ t.subtitle }}</h2><p>{{ t.description }}</p>
-        <div class="hero-actions"><button class="topic-button" (click)="explore(exploration)">{{ t.theme === 'history' ? 'Travel the timeline' : 'Explore architecture' }} <span>↗</span></button>
-          <a class="topic-button ghost" [routerLink]="['/courses', t.slug]">Read Full Lesson <span>→</span></a><a class="topic-button ghost" href="#learning-resources">Watch topic lessons ↗</a></div>
-        <div class="hero-caption"><span>01 / EXPLORE</span><span>02 / INTERACT</span><span>03 / CONNECT</span></div>
+        <h2 class="text-2xl sm:text-3xl font-semibold text-slate-100 mt-2">{{ t.subtitle }}</h2>
+        <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">{{ t.description }}</p>
+        <div class="hero-actions mt-6"><button class="topic-button text-base font-bold" (click)="explore(exploration)">{{ t.theme === 'history' ? 'Travel the timeline' : 'Explore architecture' }} <span>↗</span></button>
+          <a class="topic-button ghost text-base font-bold" [routerLink]="['/courses', t.slug]">Read Full Lesson <span>→</span></a><a class="topic-button ghost text-base font-bold" href="#learning-resources">Watch topic lessons ↗</a></div>
+        <div class="hero-caption text-sm font-semibold tracking-wider"><span>01 / EXPLORE</span><span>02 / INTERACT</span><span>03 / CONNECT</span></div>
       </div>
       <div class="hero-processor"><span class="binary-backdrop" aria-hidden="true">01001001<br>10110100<br>00101110</span><app-cpu3d [label]="t.theme === 'history' ? 'MICROPROCESSOR' : t.label + ' CPU'" [cores]="t.cores" [advanced]="t.slug === 'sap-2'" /></div>
     </header>
     <div class="summary-stats">@for (item of t.specs; track item.label) {<app-summary-card [item]="item" />}</div>
     @if (t.slug === 'sap-1') {
-      <section appReveal class="exhibit-section" aria-labelledby="overview-title"><div class="section-heading"><span class="section-kicker">01 / THE IDEA</span><h2 id="overview-title">A computer you can follow.</h2><p>SAP-1 strips computation down to the essentials: store, move, calculate, and display. Every register has a job.</p></div>
+      <section appReveal class="exhibit-section" aria-labelledby="overview-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">01 / THE IDEA</span>
+          <h2 id="overview-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">A computer you can follow.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">SAP-1 strips computation down to the essentials: store, move, calculate, and display. Every register has a job.</p>
+        </div>
         <div class="summary-grid">@for (item of overview; track item.label) {<app-summary-card [item]="item" [animated]="true" />}</div>
       </section>
     } @else if (t.slug === 'sap-2') {
-      <section appReveal class="exhibit-section" aria-labelledby="comparison-title"><div class="section-heading"><span class="section-kicker">01 / THE EVOLUTION</span><h2 id="comparison-title">Same foundation. More possibilities.</h2><p>SAP-2 expands the learning model with more ways to store data, make decisions, and communicate.</p></div>
-        <div class="comparison"><article><span class="section-kicker">THE FOUNDATION</span><h3>SAP-1</h3><ul><li>Simple shared datapath</li><li>Five core instructions</li><li>A and B working registers</li><li>16 bytes of memory</li></ul><a routerLink="/topics/sap-1/summary">Explore SAP-1 →</a></article>
+      <section appReveal class="exhibit-section" aria-labelledby="comparison-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">01 / THE EVOLUTION</span>
+          <h2 id="comparison-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Same foundation. More possibilities.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">SAP-2 expands the learning model with more ways to store data, make decisions, and communicate.</p>
+        </div>
+        <div class="comparison"><article><span class="section-kicker text-base font-bold tracking-wider">THE FOUNDATION</span><h3 class="text-3xl sm:text-4xl font-bold text-white mt-2">SAP-1</h3><ul class="text-lg sm:text-xl text-slate-200 space-y-2 mt-4"><li>Simple shared datapath</li><li>Five core instructions</li><li>A and B working registers</li><li>16 bytes of memory</li></ul><a class="text-lg font-bold text-sky-400 mt-6 inline-block hover:underline" routerLink="/topics/sap-1/summary">Explore SAP-1 →</a></article>
           <div class="evolution-arrow" aria-hidden="true"><span>EVOLVES INTO</span>⟶</div>
-          <article class="comparison-advanced"><span class="section-kicker">THE NEXT STEP</span><h3>SAP-2</h3><ul><li>More registers and I/O ports</li><li>Arithmetic and logic operations</li><li>Sign and zero flags</li><li>Branches and subroutines</li></ul><span class="detail-route">8-bit data / 16-bit addresses</span></article></div>
+          <article class="comparison-advanced"><span class="section-kicker text-base font-bold tracking-wider">THE NEXT STEP</span><h3 class="text-3xl sm:text-4xl font-bold text-white mt-2">SAP-2</h3><ul class="text-lg sm:text-xl text-slate-200 space-y-2 mt-4"><li>More registers and I/O ports</li><li>Arithmetic and logic operations</li><li>Sign and zero flags</li><li>Branches and subroutines</li></ul><span class="detail-route text-base font-bold mt-6 inline-block">8-bit data / 16-bit addresses</span></article></div>
       </section>
     }
     <section #exploration appReveal tabindex="-1" class="exhibit-section exploration-section" [attr.aria-labelledby]="t.theme === 'history' ? 'timeline-title' : 'architecture-title'">
       @if (t.theme === 'history') {
-        <div class="section-heading"><span class="section-kicker">01 / A JOURNEY THROUGH SILICON</span><h2 id="timeline-title">Six eras. One remarkable evolution.</h2><p>Select an era to see the processor change. Follow the shift from integrating a CPU to sharing work across many processing engines.</p></div>
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">01 / A JOURNEY THROUGH SILICON</span>
+          <h2 id="timeline-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Six eras. One remarkable evolution.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Select an era to see the processor change. Follow the shift from integrating a CPU to sharing work across many processing engines.</p>
+        </div>
         <app-timeline />
       } @else {
-        <div class="section-heading"><span class="section-kicker">02 / INSIDE THE MACHINE</span><h2 id="architecture-title">Meet the architecture.</h2><p>Hover, focus, or select a component to discover its job. The central highway shows the shared data bus.</p></div>
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">02 / INSIDE THE MACHINE</span>
+          <h2 id="architecture-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Meet the architecture.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Hover, focus, or select a component to discover its job. The central highway shows the shared data bus.</p>
+        </div>
         <app-architecture [nodes]="t.architecture" [activeIds]="t.slug === 'sap-1' && traceIndex() > 0 ? trace().active : []" />
       }
     </section>
     @if (t.slug === 'sap-1') {
-      <section appReveal class="exhibit-section" aria-labelledby="cycle-title"><div class="section-heading"><span class="section-kicker">03 / THE INSTRUCTION CYCLE</span><h2 id="cycle-title">A rhythm behind every result.</h2><p>Fetch, decode, and execute repeat for each instruction. Output happens when the program requests it with OUT.</p></div>
-        <div class="cycle-grid">@for (step of cycle; track step.label) {<article appReveal class="cycle-card" [class.active]="traceIndex() > 0 && trace().phase === step.label"><span>{{ step.code }}</span><div class="cycle-glyph" aria-hidden="true">{{ step.label === 'FETCH' ? '↓' : step.label === 'DECODE' ? '⌘' : step.label === 'EXECUTE' ? '+ / −' : '0101' }}</div><h3>{{ step.label }}</h3><p>{{ step.description }}</p></article>}</div>
+      <section appReveal class="exhibit-section" aria-labelledby="cycle-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">03 / THE INSTRUCTION CYCLE</span>
+          <h2 id="cycle-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">A rhythm behind every result.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Fetch, decode, and execute repeat for each instruction. Output happens when the program requests it with OUT.</p>
+        </div>
+        <div class="cycle-grid">@for (step of cycle; track step.label) {<article appReveal class="cycle-card" [class.active]="traceIndex() > 0 && trace().phase === step.label"><span class="text-base font-bold text-sky-400">{{ step.code }}</span><div class="cycle-glyph text-2xl font-bold" aria-hidden="true">{{ step.label === 'FETCH' ? '↓' : step.label === 'DECODE' ? '⌘' : step.label === 'EXECUTE' ? '+ / −' : '0101' }}</div><h3 class="text-xl font-bold text-white">{{ step.label }}</h3><p class="text-lg leading-relaxed text-slate-200 mt-2">{{ step.description }}</p></article>}</div>
       </section>
-      <section appReveal class="exhibit-section" aria-labelledby="instructions-title"><div class="section-heading"><span class="section-kicker">04 / THE LANGUAGE</span><h2 id="instructions-title">Five instructions. A working computer.</h2><p>Four opcode bits choose the operation; four operand bits can select a memory address.</p></div>
+      <section appReveal class="exhibit-section" aria-labelledby="instructions-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">04 / THE LANGUAGE</span>
+          <h2 id="instructions-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Five instructions. A working computer.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Four opcode bits choose the operation; four operand bits can select a memory address.</p>
+        </div>
         <div class="instruction-grid">@for (instruction of instructions; track instruction.code) {<app-instruction-card [code]="instruction.code" [bits]="instruction.bits" [description]="instruction.description" />}</div>
       </section>
-      <section appReveal class="exhibit-section" aria-labelledby="trace-title"><div class="section-heading"><span class="section-kicker">05 / FOLLOW A BYTE</span><h2 id="trace-title">Watch 5 + 3 become 8.</h2><p>A small frontend demonstration of LDA E → ADD F → OUT → HLT. Advance each step to see memory, registers, and output change.</p></div>
-        <div class="trace-console"><div class="console-toolbar"><span><i class="live-indicator"></i> DATA MOVING THROUGH SAP-1</span><span>STEP {{ traceIndex() }} / {{ traceLength - 1 }}</span></div>
-          <div class="trace-controls"><button class="topic-button ghost" (click)="resetTrace()" [disabled]="traceIndex() === 0">Reset ↺</button><button class="topic-button ghost" (click)="previousStep()" [disabled]="traceIndex() === 0">← Previous</button><button class="topic-button" (click)="nextStep()" [disabled]="traceIndex() === traceLength - 1">{{ traceIndex() === traceLength - 1 ? 'Halted' : 'Next step →' }}</button></div>
-          <div class="trace-status" aria-live="polite" aria-atomic="true"><span class="section-kicker">{{ trace().phase }}</span><h3>{{ trace().label }}</h3><p>{{ trace().description }}</p></div>
+      <section appReveal class="exhibit-section" aria-labelledby="trace-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">05 / FOLLOW A BYTE</span>
+          <h2 id="trace-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Watch 5 + 3 become 8.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">A small frontend demonstration of LDA E → ADD F → OUT → HLT. Advance each step to see memory, registers, and output change.</p>
+        </div>
+        <div class="trace-console">
+          <div class="console-toolbar text-base font-semibold"><span><i class="live-indicator"></i> DATA MOVING THROUGH SAP-1</span><span>STEP {{ traceIndex() }} / {{ traceLength - 1 }}</span></div>
+          <div class="trace-controls"><button class="topic-button ghost text-base font-bold" (click)="resetTrace()" [disabled]="traceIndex() === 0">Reset ↺</button><button class="topic-button ghost text-base font-bold" (click)="previousStep()" [disabled]="traceIndex() === 0">← Previous</button><button class="topic-button text-base font-bold" (click)="nextStep()" [disabled]="traceIndex() === traceLength - 1">{{ traceIndex() === traceLength - 1 ? 'Halted' : 'Next step →' }}</button></div>
+          <div class="trace-status" aria-live="polite" aria-atomic="true"><span class="section-kicker text-base font-bold tracking-wider">{{ trace().phase }}</span><h3 class="text-2xl sm:text-3xl font-bold text-white mt-2">{{ trace().label }}</h3><p class="text-xl leading-relaxed text-slate-200 mt-3">{{ trace().description }}</p></div>
           <div class="register-strip">@for (register of [{label: 'PC', value: trace().pc, binary: ''}, {label: 'A / ACCUMULATOR', value: trace().a, binary: binary(trace().a)}, {label: 'B / OPERAND', value: trace().b, binary: binary(trace().b)}, {label: 'OUT / DISPLAY', value: trace().out, binary: binary(trace().out)}]; track register.label) {
-            <div><span>{{ register.label }}</span><strong>{{ register.value }}</strong>@if (register.binary) {<code>{{ register.binary }}</code>}</div>
+            <div><span class="text-sm font-bold text-sky-400">{{ register.label }}</span><strong class="text-3xl sm:text-4xl font-bold my-2 block text-accent">{{ register.value }}</strong>@if (register.binary) {<code class="text-base text-slate-300 font-mono">{{ register.binary }}</code>}</div>
           }</div>
-          <div class="memory-heading"><span class="section-kicker">RAM / 16 BYTES</span><span>ADDRESS / BYTE / CONTENT</span></div>
-          <div class="memory-grid">@for (cell of memory; track cell.address) {<div [class.address-active]="trace().address === cell.address"><span>{{ cell.address }}</span><code>{{ cell.byte }}</code><small>{{ cell.label }}</small></div>}</div>
+          <div class="memory-heading text-base font-bold"><span class="section-kicker text-base font-bold tracking-wider">RAM / 16 BYTES</span><span>ADDRESS / BYTE / CONTENT</span></div>
+          <div class="memory-grid">@for (cell of memory; track cell.address) {<div [class.address-active]="trace().address === cell.address"><span class="text-base font-bold text-accent">{{ cell.address }}</span><code class="text-base text-slate-200">{{ cell.byte }}</code><small class="text-sm text-slate-300">{{ cell.label }}</small></div>}</div>
           <div class="trace-data-path" aria-hidden="true"><span [class.active]="trace().active.includes('ram')">RAM</span><i [class.active]="trace().active.includes('ram')"></i><span [class.active]="trace().active.includes('acc') || trace().active.includes('b')">A / B</span><i [class.active]="trace().active.includes('alu')"></i><span [class.active]="trace().active.includes('alu')">ALU</span><i [class.active]="trace().active.includes('alu')"></i><span [class.active]="trace().active.includes('acc')">A</span><i [class.active]="trace().active.includes('out')"></i><span [class.active]="trace().active.includes('out')">OUT</span></div>
-          <p class="diagram-note">Conceptual transfer steps, not a clock-accurate emulator. The highlighted blocks in the architecture above follow the selected step.</p>
+          <p class="diagram-note text-base text-slate-300 mt-4">Conceptual transfer steps, not a clock-accurate emulator. The highlighted blocks in the architecture above follow the selected step.</p>
         </div>
       </section>
     } @else if (t.slug === 'sap-2') {
-      <section appReveal class="exhibit-section" aria-labelledby="capabilities-title"><div class="section-heading"><span class="section-kicker">03 / NEW CAPABILITIES</span><h2 id="capabilities-title">Beyond a straight line.</h2><p>Programs can now choose, repeat, combine bit patterns, and exchange data with devices.</p></div><div class="summary-grid">@for (item of capabilities; track item.label) {<app-summary-card [item]="item" [animated]="true" />}</div></section>
-      <section appReveal class="exhibit-section" aria-labelledby="flags-title"><div class="section-heading"><span class="section-kicker">04 / RESULTS THAT GUIDE DECISIONS</span><h2 id="flags-title">Two lights. A different next step.</h2><p>After an operation updates the flags, zero indicates an all-zero result. Sign follows the high bit of the 8-bit result.</p></div>
-        <div class="flag-lab"><div class="flag-input"><span class="section-kicker">RESULT IN THE ACCUMULATOR</span><div class="bit-display" aria-label="Binary accumulator">@for (bit of bits(); track $index) {<span [class.bit-on]="bit === '1'">{{ bit }}</span>}</div>
-          <label for="accumulator-result">Choose an 8-bit result <span>{{ accumulator() }} unsigned / {{ signed() }} signed</span></label>
-          <input #result id="accumulator-result" type="range" min="0" max="255" step="1" [value]="accumulator()" (input)="setAccumulator(result.value)">
-          <div class="flag-presets"><button (click)="accumulator.set(0)">Zero / 0</button><button (click)="accumulator.set(5)">Positive / 5</button><button (click)="accumulator.set(255)">Negative / −1</button><button (click)="decrement()">Decrement ↘</button></div>
-          <p class="diagram-note">A frontend flag demonstration. Signed values use two’s complement; decrement wraps within one byte.</p>
-        </div><div class="flag-indicators" aria-live="polite" aria-atomic="true"><div [class.flag-on]="zeroFlag()"><i></i><span>ZERO FLAG<strong>{{ zeroFlag() ? 'ON' : 'OFF' }}</strong><small>{{ zeroFlag() ? 'Result equals zero' : 'Result is non-zero' }}</small></span></div><div [class.flag-on]="signFlag()"><i></i><span>SIGN FLAG<strong>{{ signFlag() ? 'ON' : 'OFF' }}</strong><small>{{ signFlag() ? 'High bit is 1' : 'High bit is 0' }}</small></span></div><p class="branch-outcome">{{ zeroFlag() ? 'JZ condition: take the branch.' : 'JNZ condition: take the branch.' }}</p></div></div>
+      <section appReveal class="exhibit-section" aria-labelledby="capabilities-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">03 / NEW CAPABILITIES</span>
+          <h2 id="capabilities-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Beyond a straight line.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Programs can now choose, repeat, combine bit patterns, and exchange data with devices.</p>
+        </div>
+        <div class="summary-grid">@for (item of capabilities; track item.label) {<app-summary-card [item]="item" [animated]="true" />}</div>
       </section>
-      <section appReveal class="exhibit-section" aria-labelledby="groups-title"><div class="section-heading"><span class="section-kicker">05 / THE INSTRUCTION FAMILIES</span><h2 id="groups-title">Think in groups, not lists.</h2><p>A few representative mnemonics show the purpose of each family. See the complete lesson for operands and exact encodings.</p></div><div class="instruction-family-grid">@for (group of groups; track group.label) {<app-summary-card [item]="group" />}</div></section>
+      <section appReveal class="exhibit-section" aria-labelledby="flags-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">04 / RESULTS THAT GUIDE DECISIONS</span>
+          <h2 id="flags-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Two lights. A different next step.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">After an operation updates the flags, zero indicates an all-zero result. Sign follows the high bit of the 8-bit result.</p>
+        </div>
+        <div class="flag-lab">
+          <div class="flag-input"><span class="section-kicker text-base font-bold tracking-wider">RESULT IN THE ACCUMULATOR</span>
+            <div class="bit-display" aria-label="Binary accumulator">@for (bit of bits(); track $index) {<span [class.bit-on]="bit === '1'">{{ bit }}</span>}</div>
+            <label for="accumulator-result" class="text-lg font-bold text-slate-200">Choose an 8-bit result <span class="text-accent text-lg font-mono">{{ accumulator() }} unsigned / {{ signed() }} signed</span></label>
+            <input #result id="accumulator-result" type="range" min="0" max="255" step="1" [value]="accumulator()" (input)="setAccumulator(result.value)">
+            <div class="flag-presets mt-4"><button class="text-base font-bold px-4 py-2" (click)="accumulator.set(0)">Zero / 0</button><button class="text-base font-bold px-4 py-2" (click)="accumulator.set(5)">Positive / 5</button><button class="text-base font-bold px-4 py-2" (click)="accumulator.set(255)">Negative / −1</button><button class="text-base font-bold px-4 py-2" (click)="decrement()">Decrement ↘</button></div>
+            <p class="diagram-note text-base text-slate-300 mt-4">A frontend flag demonstration. Signed values use two’s complement; decrement wraps within one byte.</p>
+          </div>
+          <div class="flag-indicators" aria-live="polite" aria-atomic="true">
+            <div [class.flag-on]="zeroFlag()"><i></i><span>ZERO FLAG<strong class="text-3xl font-bold">{{ zeroFlag() ? 'ON' : 'OFF' }}</strong><small class="text-base text-slate-200">{{ zeroFlag() ? 'Result equals zero' : 'Result is non-zero' }}</small></span></div>
+            <div [class.flag-on]="signFlag()"><i></i><span>SIGN FLAG<strong class="text-3xl font-bold">{{ signFlag() ? 'ON' : 'OFF' }}</strong><small class="text-base text-slate-200">{{ signFlag() ? 'High bit is 1' : 'High bit is 0' }}</small></span></div>
+            <p class="branch-outcome text-lg font-bold">{{ zeroFlag() ? 'JZ condition: take the branch.' : 'JNZ condition: take the branch.' }}</p>
+          </div>
+        </div>
+      </section>
+      <section appReveal class="exhibit-section" aria-labelledby="groups-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">05 / THE INSTRUCTION FAMILIES</span>
+          <h2 id="groups-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Think in groups, not lists.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">A few representative mnemonics show the purpose of each family. See the complete lesson for operands and exact encodings.</p>
+        </div>
+        <div class="instruction-family-grid">@for (group of groups; track group.label) {<app-summary-card [item]="group" />}</div>
+      </section>
     } @else {
-      <section appReveal class="exhibit-section" aria-labelledby="evolution-title"><div class="section-heading"><span class="section-kicker">KEY EVOLUTION</span><h2 id="evolution-title">Five shifts behind the progress.</h2><p>Processor development combines integration, speed, parallel work, fast memory, and efficient use of energy.</p></div><div class="summary-grid">@for (item of evolution; track item.label) {<app-summary-card [item]="item" [animated]="true" />}</div></section>
-      <section appReveal class="exhibit-section" aria-labelledby="modern-title"><div class="section-heading"><span class="section-kicker">02 / INSIDE A MODERN PROCESSOR</span><h2 id="modern-title">One package. Many engines.</h2><p>Explore four illustrative cores and the resources that support them. Each core has its own execution machinery.</p></div>
-        <div class="modern-layout"><div class="modern-package"><div class="console-toolbar"><span>MULTI-CORE PROCESSOR</span><span>SCHEMATIC / 04</span></div><div class="modern-cores">@for (part of modernParts.slice(0, 4); track part.id) {<button [class.active]="modernPart() === part.id" [attr.aria-pressed]="modernPart() === part.id" (click)="modernPart.set(part.id)" (mouseenter)="modernPart.set(part.id)" (focus)="modernPart.set(part.id)"><span class="core-grid" aria-hidden="true"></span><strong>{{ part.label }}</strong><span>EXECUTION ENGINE</span></button>}</div><div class="modern-resources">@for (part of modernParts.slice(4); track part.id) {<button [class.active]="modernPart() === part.id" [attr.aria-pressed]="modernPart() === part.id" (click)="modernPart.set(part.id)" (mouseenter)="modernPart.set(part.id)" (focus)="modernPart.set(part.id)">{{ part.label }}</button>}</div></div>
-          <aside class="modern-detail" id="modern-detail"><span class="section-kicker">INSIDE THE PACKAGE</span><h3>{{ modernDetail().label }}</h3><p>{{ modernDetail().description }}</p><span class="detail-route">Select a core or resource to explore</span><p class="diagram-note">A conceptual illustration, not a physical floorplan. Registers, control, and ALUs are resources within each core; cache organization varies by processor.</p></aside></div>
+      <section appReveal class="exhibit-section" aria-labelledby="evolution-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">KEY EVOLUTION</span>
+          <h2 id="evolution-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">Five shifts behind the progress.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4 font-normal">Processor development combines integration, speed, parallel work, fast memory, and efficient use of energy.</p>
+        </div>
+        <div class="summary-grid">
+          @for (item of evolution; track item.label) {
+            <app-summary-card [item]="item" [animated]="true" />
+          }
+        </div>
       </section>
-      <section appReveal class="exhibit-section" aria-labelledby="history-connections"><div class="section-heading"><span class="section-kicker">03 / CONNECT THE IDEAS</span><h2 id="history-connections">The foundations still matter.</h2><p>Technology changes. Fetching instructions, moving data, and performing operations remain central ideas.</p></div><div class="history-links"><a routerLink="/topics/sap-1/summary"><span>START WITH THE ESSENTIALS</span><strong>SAP-1 →</strong><p>Trace one instruction through a simple machine.</p></a><a routerLink="/topics/sap-2/summary"><span>ADD CONTROL AND CHOICE</span><strong>SAP-2 →</strong><p>Explore registers, flags, and conditional flow.</p></a></div></section>
+      <section appReveal class="exhibit-section" aria-labelledby="modern-title">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">02 / INSIDE A MODERN PROCESSOR</span>
+          <h2 id="modern-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">One package. Many engines.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Explore four illustrative cores and the resources that support them. Each core has its own execution machinery.</p>
+        </div>
+        <div class="modern-layout">
+          <div class="modern-package">
+            <div class="console-toolbar text-base font-bold"><span>MULTI-CORE PROCESSOR</span><span>SCHEMATIC / 04</span></div>
+            <div class="modern-cores">@for (part of modernParts.slice(0, 4); track part.id) {<button [class.active]="modernPart() === part.id" [attr.aria-pressed]="modernPart() === part.id" (click)="modernPart.set(part.id)" (mouseenter)="modernPart.set(part.id)" (focus)="modernPart.set(part.id)"><span class="core-grid" aria-hidden="true"></span><strong class="text-2xl font-bold">{{ part.label }}</strong><span class="text-sm font-semibold text-slate-300">EXECUTION ENGINE</span></button>}</div>
+            <div class="modern-resources">@for (part of modernParts.slice(4); track part.id) {<button class="text-base font-bold p-3" [class.active]="modernPart() === part.id" [attr.aria-pressed]="modernPart() === part.id" (click)="modernPart.set(part.id)" (mouseenter)="modernPart.set(part.id)" (focus)="modernPart.set(part.id)">{{ part.label }}</button>}</div>
+          </div>
+          <aside class="modern-detail" id="modern-detail">
+            <span class="section-kicker text-base font-bold tracking-wider">INSIDE THE PACKAGE</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mt-3">{{ modernDetail().label }}</h3>
+            <p class="text-xl leading-relaxed text-slate-200 mt-3">{{ modernDetail().description }}</p>
+            <span class="detail-route text-base font-bold mt-4 inline-block">Select a core or resource to explore</span>
+            <p class="diagram-note text-base text-slate-300 mt-4">A conceptual illustration, not a physical floorplan. Registers, control, and ALUs are resources within each core; cache organization varies by processor.</p>
+          </aside>
+        </div>
+      </section>
+      <section appReveal class="exhibit-section" aria-labelledby="history-connections">
+        <div class="section-heading">
+          <span class="section-kicker text-base font-bold tracking-wider">03 / CONNECT THE IDEAS</span>
+          <h2 id="history-connections" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">The foundations still matter.</h2>
+          <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">Technology changes. Fetching instructions, moving data, and performing operations remain central ideas.</p>
+        </div>
+        <div class="history-links">
+          <a routerLink="/topics/sap-1/summary"><span class="text-base font-bold text-accent">START WITH THE ESSENTIALS</span><strong class="text-3xl sm:text-4xl font-bold text-white mt-2 block">SAP-1 →</strong><p class="text-xl text-slate-200 mt-3">Trace one instruction through a simple machine.</p></a>
+          <a routerLink="/topics/sap-2/summary"><span class="text-base font-bold text-accent">ADD CONTROL AND CHOICE</span><strong class="text-3xl sm:text-4xl font-bold text-white mt-2 block">SAP-2 →</strong><p class="text-xl text-slate-200 mt-3">Explore registers, flags, and conditional flow.</p></a>
+        </div>
+      </section>
     }
     <app-topic-learning [guide]="learningGuides[t.slug]" />
-    <section appReveal class="exhibit-finale" aria-labelledby="summary-title"><div><span class="section-kicker">THE TAKEAWAY</span><h2 id="summary-title">{{ t.slug === 'sap-1' ? 'Small architecture. Complete idea.' : t.slug === 'sap-2' ? 'More ways to think in instructions.' : 'From a single chip to shared intelligence.' }}</h2><p>{{ t.slug === 'sap-1' ? '8-bit data · 16-byte memory · LDA / ADD / SUB / OUT / HLT · Built for learning.' : t.slug === 'sap-2' ? 'I/O · Branching · Logic · Sign and zero flags · Subroutines · Multiple registers.' : 'Integration · Wider words · Caches · Multiple cores · Specialized processing.' }}</p></div><div class="finale-actions"><a class="topic-button" [routerLink]="['/courses', t.slug]">Read Full {{ t.label }} Lesson <span>→</span></a><a class="topic-button ghost" routerLink="/">Back to Topics</a></div></section>
-    <p class="exhibit-footnote">A visual overview to help you make connections. The complete lesson and presentation are one click away.</p>
-    @if (t.theme === 'history') {<p class="exhibit-footnote">Historical reference: <a href="https://timeline.intel.com/" target="_blank" rel="noopener noreferrer">Intel’s historical timeline ↗</a></p>}
-    @if (t.slug === 'sap-2') {<p class="exhibit-footnote">Flag reference: <a href="https://esb.ics.hawaii.edu/2003fall.ics331/oct22.html" target="_blank" rel="noopener noreferrer">University of Hawaiʻi SAP-2 teaching notes ↗</a></p>}
+    <section appReveal class="exhibit-finale" aria-labelledby="summary-title">
+      <div>
+        <span class="section-kicker text-base font-bold tracking-wider">THE TAKEAWAY</span>
+        <h2 id="summary-title" class="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-white">{{ t.slug === 'sap-1' ? 'Small architecture. Complete idea.' : t.slug === 'sap-2' ? 'More ways to think in instructions.' : 'From a single chip to shared intelligence.' }}</h2>
+        <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-4">{{ t.slug === 'sap-1' ? '8-bit data · 16-byte memory · LDA / ADD / SUB / OUT / HLT · Built for learning.' : t.slug === 'sap-2' ? 'I/O · Branching · Logic · Sign and zero flags · Subroutines · Multiple registers.' : 'Integration · Wider words · Caches · Multiple cores · Specialized processing.' }}</p>
+      </div>
+      <div class="finale-actions mt-4 sm:mt-0">
+        <a class="topic-button text-base font-bold px-6 py-4" [routerLink]="['/courses', t.slug]">Read Full {{ t.label }} Lesson <span>→</span></a>
+        <a class="topic-button ghost text-base font-bold px-6 py-4" routerLink="/">Back to Topics</a>
+      </div>
+    </section>
+    <p class="exhibit-footnote text-base text-slate-400 mt-6">A visual overview to help you make connections. The complete lesson and presentation are one click away.</p>
+    @if (t.theme === 'history') {<p class="exhibit-footnote text-base text-slate-400 mt-2">Historical reference: <a class="text-accent underline font-semibold" href="https://timeline.intel.com/" target="_blank" rel="noopener noreferrer">Intel’s historical timeline ↗</a></p>}
+    @if (t.slug === 'sap-2') {<p class="exhibit-footnote text-base text-slate-400 mt-2">Flag reference: <a class="text-accent underline font-semibold" href="https://esb.ics.hawaii.edu/2003fall.ics331/oct22.html" target="_blank" rel="noopener noreferrer">University of Hawaiʻi SAP-2 teaching notes ↗</a></p>}
   </div>
 }

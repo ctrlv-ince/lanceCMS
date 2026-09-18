@@ -31,16 +31,36 @@ export class Cpu3dComponent {
 
 @Component({selector: 'app-summary-card', standalone: true,
   template: `<article class="summary-tile" [class.capability-tile]="animated()">
-    <span class="summary-tile-label">{{ item().label }}</span>
-    <strong>{{ item().value }}</strong><p>{{ item().description }}</p>
+    <span class="summary-tile-label text-base font-bold tracking-wider text-sky-400">{{ item().label }}</span>
+    <strong class="text-3xl sm:text-4xl font-bold my-3 block text-white">{{ item().value }}</strong>
+    <p class="text-xl sm:text-2xl leading-relaxed text-slate-200 mt-3 font-normal">{{ item().description }}</p>
     @if (animated()) {<span class="mini-circuit" aria-hidden="true"><i></i><i></i><i></i></span>}
   </article>`,
+  styles: [`
+    :host { display: block; min-width: 0; }
+    .summary-tile { height: 100%; position: relative; overflow: hidden; padding: 28px 24px; border-radius: 16px; background: #0f172a; border: 1px solid var(--exhibit-line, #243047); }
+    .summary-tile-label { display: block; color: #93c5fd !important; font-size: 16px !important; font-weight: 700 !important; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-tile strong { display: block; margin-top: 12px; color: #ffffff !important; font-size: 30px !important; font-weight: 750 !important; letter-spacing: -.025em; overflow-wrap: anywhere; line-height: 1.25; }
+    .capability-tile strong { color: var(--accent, #38d9f5) !important; font-size: 28px !important; font-weight: 750 !important; }
+    .summary-tile p { font-size: 20px !important; line-height: 1.8 !important; margin-top: 14px; color: #e2e8f0 !important; }
+  `],
 })
 export class SummaryCardComponent { item = input.required<SummaryItem>(); animated = input(false); }
 
 @Component({selector: 'app-instruction-card', standalone: true,
-  template: `<article class="instruction-tile"><span class="instruction-bits">{{ bits() }} <i></i></span>
-    <strong>{{ code() }}</strong><p>{{ description() }}</p><span class="instruction-foot">OPCODE / MODULE</span></article>`,
+  template: `<article class="instruction-tile">
+    <span class="instruction-bits text-base font-bold tracking-widest">{{ bits() }} <i></i></span>
+    <strong class="text-3xl sm:text-4xl font-bold my-3 block text-accent">{{ code() }}</strong>
+    <p class="text-xl leading-relaxed text-slate-200">{{ description() }}</p>
+    <span class="instruction-foot text-sm font-semibold tracking-wider">OPCODE / MODULE</span>
+  </article>`,
+  styles: [`
+    :host { display: block; min-width: 0; }
+    .instruction-bits { font-size: 15px; font-weight: 700; }
+    .instruction-tile strong { font-size: 34px !important; font-weight: 750; }
+    .instruction-tile p { font-size: 18px !important; line-height: 1.8; color: #e2e8f0; }
+    .instruction-foot { font-size: 14px; font-weight: 600; }
+  `],
 })
 export class InstructionCardComponent { code = input(''); bits = input(''); description = input(''); }
 
@@ -48,11 +68,20 @@ export class InstructionCardComponent { code = input(''); bits = input(''); desc
   template: `<button class="architecture-block" [class.selected]="selected()" [class.running]="running()"
     [attr.aria-pressed]="selected()" aria-describedby="architecture-detail"
     (click)="activate.emit(node().id)" (mouseenter)="activate.emit(node().id)" (focus)="activate.emit(node().id)">
-    <span class="block-top"><span>{{ node().kind }}</span><i></i></span>
-    <strong>{{ node().label }}</strong><span class="block-name">{{ node().name }}</span>
-    <span class="block-description">{{ node().description }}</span>
-    <span class="block-connection">{{ node().connection }}</span>
+    <span class="block-top text-sm font-bold tracking-wider"><span>{{ node().kind }}</span><i></i></span>
+    <strong class="text-2xl sm:text-3xl font-bold my-1 block text-accent">{{ node().label }}</strong>
+    <span class="block-name text-lg font-bold text-white">{{ node().name }}</span>
+    <span class="block-description text-base text-slate-200 leading-normal">{{ node().description }}</span>
+    <span class="block-connection text-sm text-slate-300 font-mono">{{ node().connection }}</span>
   </button>`,
+  styles: [`
+    :host { display: block; height: 100%; }
+    .block-top { font-size: 13px; font-weight: 700; }
+    .architecture-block strong { font-size: 28px !important; font-weight: 750; }
+    .block-name { font-size: 17px !important; font-weight: 700; }
+    .block-description { font-size: 16px !important; line-height: 1.7; color: #cbd5e1; }
+    .block-connection { font-size: 13px; }
+  `],
 })
 export class ArchitectureBlockComponent {
   node = input.required<ArchitectureNode>(); selected = input(false); running = input(false);
@@ -107,26 +136,32 @@ export class ArchitectureComponent {
   template: `
     <div class="era-navigation" aria-label="Choose an era">
       @for (era of eras; track era.year; let i = $index) {
-        <button [class.active]="selected() === i" [attr.aria-pressed]="selected() === i" (click)="choose(i, detail)">{{ era.year }}</button>
+        <button class="text-base font-bold" [class.active]="selected() === i" [attr.aria-pressed]="selected() === i" (click)="choose(i, detail)">{{ era.year }}</button>
       }
     </div>
     <div #detail tabindex="-1" class="era-feature" aria-live="polite">
       <app-cpu3d [label]="current().chip" [cores]="current().cores" />
-      <div><span class="section-kicker">{{ current().year }} / {{ current().bits }}</span><h3>{{ current().label }}</h3>
-        <p>{{ current().description }}</p><div class="era-milestone"><span>THE SHIFT</span>{{ current().milestone }}</div>
-        <div class="era-controls"><button class="topic-button ghost" [disabled]="selected() === 0" (click)="selected.set(selected() - 1)">← Earlier</button>
-          <span>{{ selected() + 1 }} / {{ eras.length }}</span><button class="topic-button ghost" [disabled]="selected() === eras.length - 1" (click)="selected.set(selected() + 1)">Later →</button></div>
+      <div>
+        <span class="section-kicker text-base font-bold tracking-wider">{{ current().year }} / {{ current().bits }}</span>
+        <h3 class="text-3xl font-bold mt-2">{{ current().label }}</h3>
+        <p class="text-lg sm:text-xl leading-relaxed text-slate-200 mt-3">{{ current().description }}</p>
+        <div class="era-milestone text-lg text-slate-100 font-medium"><span class="text-sm font-bold text-accent">THE SHIFT</span>{{ current().milestone }}</div>
+        <div class="era-controls mt-6">
+          <button class="topic-button ghost text-base" [disabled]="selected() === 0" (click)="selected.set(selected() - 1)">← Earlier</button>
+          <span class="text-base font-bold">{{ selected() + 1 }} / {{ eras.length }}</span>
+          <button class="topic-button ghost text-base" [disabled]="selected() === eras.length - 1" (click)="selected.set(selected() + 1)">Later →</button>
+        </div>
       </div>
     </div>
     <div class="evolution-track">
       @for (era of eras; track era.year; let i = $index) {
         <button appReveal class="evolution-stop" [class.active]="selected() === i" [attr.aria-pressed]="selected() === i" (click)="choose(i, detail)">
-          <span class="evolution-year">{{ era.year }}</span><span class="evolution-chip" [class.chip-expanded]="i > 2">
+          <span class="evolution-year text-base font-bold">{{ era.year }}</span><span class="evolution-chip" [class.chip-expanded]="i > 2">
             @for (core of coreIds(era.cores); track core) {<i></i>}
-          </span><strong>{{ era.bits }}</strong><span>{{ era.label }}</span>
+          </span><strong class="text-base font-bold">{{ era.bits }}</strong><span class="text-sm font-medium text-slate-300">{{ era.label }}</span>
         </button>
       }
-    </div><p class="diagram-note">These eras show broad adoption, not invention dates. Technologies overlap and evolve at different rates.</p>`,
+    </div><p class="diagram-note text-base text-slate-400">These eras show broad adoption, not invention dates. Technologies overlap and evolve at different rates.</p>`,
 })
 export class TimelineComponent {
   eras = ERAS; selected = signal(0); current = computed(() => this.eras[this.selected()]);
