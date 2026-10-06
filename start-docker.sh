@@ -11,10 +11,10 @@ else
 fi
 
 # Bring down old containers if they exist
-docker compose down
+sudo docker compose down
 
 # Pass any additional arguments (like --build) to docker compose
-docker compose up -d "$@"
+sudo docker compose up -d "$@"
 
 echo ""
 echo "Directus is accessible at: http://$HOST_IP:8055"
