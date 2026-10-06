@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase';
 
 // PocketBase client — connects to local PocketBase backend
-export const pb = new PocketBase('http://localhost:8090');
+export const pb = new PocketBase(typeof window !== 'undefined' ? `http://${window.location.hostname}:8090` : 'http://127.0.0.1:8090');
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -57,7 +57,8 @@ export function getFileUrl(
 	options?: { thumb?: string }
 ): string {
 	if (!filename) return '';
-	let url = `http://localhost:8090/api/files/${collection}/${recordId}/${filename}`;
+	const pbUrl = typeof window !== 'undefined' ? `http://${window.location.hostname}:8090` : 'http://127.0.0.1:8090';
+	let url = `${pbUrl}/api/files/${collection}/${recordId}/${filename}`;
 	if (options?.thumb) url += `?thumb=${options.thumb}`;
 	return url;
 }

@@ -24,7 +24,7 @@ export const projects: CmsProject[] = [
     accentSoft: "#F0EDFF",
     mark: "D",
     lectureTopics: ["Microprocessor History", "SAP 1", "SAP 2"],
-    studioUrl: "http://localhost",
+    studioUrl: typeof window !== 'undefined' ? `http://${window.location.hostname}` : "http://localhost",
   },
   {
     name: "Sanity",
@@ -37,7 +37,7 @@ export const projects: CmsProject[] = [
     accentSoft: "#FFF0EA",
     mark: "S",
     lectureTopics: ["SAP 3", "Raspberry Pi 1"],
-    studioUrl: "http://localhost:3333",
+    studioUrl: typeof window !== 'undefined' ? `http://${window.location.hostname}:3333` : "http://localhost:3333",
   },
   {
     name: "Decap CMS",
@@ -50,6 +50,6 @@ export const projects: CmsProject[] = [
     accentSoft: "#E9FAF4",
     mark: "DC",
     lectureTopics: ["Raspberry Pi 2", "Raspberry Pi 3"],
-    studioUrl: "http://localhost:5173",
+    studioUrl: typeof window !== 'undefined' ? `http://${window.location.hostname}:5173` : "http://localhost:5173",
   },
 ];

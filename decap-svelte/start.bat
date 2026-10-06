@@ -8,6 +8,11 @@ echo   SvelteKit + Decap CMS + PocketBase
 echo  ==========================================
 echo.
 
+for /f "tokens=2 delims=:" %%a in ('ipconfig ^| findstr /i "IPv4 Address"') do (
+    set IP=%%a
+)
+set IP=%IP: =%
+
 REM ─── Check PocketBase ────────────────────────────────────────────────────────
 if not exist "backend\pocketbase.exe" (
     echo  [WARNING] backend\pocketbase.exe not found!
@@ -21,10 +26,10 @@ if not exist "backend\pocketbase.exe" (
 )
 
 echo  [1/2] Starting PocketBase backend (port 8090)...
-start "PocketBase Backend" cmd /k "cd /d %~dp0backend && pocketbase.exe serve --http=localhost:8090"
+start "PocketBase Backend" cmd /k "cd /d %~dp0backend && pocketbase.exe serve --http=0.0.0.0:8090"
 timeout /t 2 /nobreak >nul
-echo  [OK] PocketBase started: http://localhost:8090
-echo       Admin UI:            http://localhost:8090/_/
+echo  [OK] PocketBase started: http://%IP%:8090
+echo       Admin UI:            http://%IP%:8090/_/
 echo.
 
 :start_frontend
@@ -46,20 +51,20 @@ if not exist "node_modules" (
     echo.
 )
 
-start "SvelteKit Frontend" cmd /k "npm run dev"
+start "SvelteKit Frontend" cmd /k "npm run dev -- --host"
 timeout /t 3 /nobreak >nul
-echo  [OK] SvelteKit started: http://localhost:5173
-echo       Admin Panel:         http://localhost:5173/admin/
+echo  [OK] SvelteKit started: http://%IP%:5173
+echo       Admin Panel:         http://%IP%:5173/admin/
 echo.
 
 echo  ==========================================
 echo   All services running!
 echo  ==========================================
 echo.
-echo   Frontend:    http://localhost:5173
-echo   Admin CMS:   http://localhost:5173/admin/
-echo   PocketBase:  http://localhost:8090
-echo   PB Admin:    http://localhost:8090/_/
+echo   Frontend:    http://%IP%:5173
+echo   Admin CMS:   http://%IP%:5173/admin/
+echo   PocketBase:  http://%IP%:8090
+echo   PB Admin:    http://%IP%:8090/_/
 echo.
 echo  Press any key to exit this launcher...
 echo  (The server windows will keep running)

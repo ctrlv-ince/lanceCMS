@@ -31,5 +31,5 @@ if not exist "pocketbase.exe" (
 
 echo  [OK] pocketbase.exe found. Starting server...
 echo.
-pocketbase.exe serve --http="localhost:8090"
+pocketbase.exe serve --http="0.0.0.0:8090"
 pause
